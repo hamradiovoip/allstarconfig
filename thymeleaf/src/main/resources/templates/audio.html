@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+
+<script>
+var slider = document.getElementById("rxaudio");
+var output = document.getElementById("demo");
+
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    output.innerHTML = this.value;
+} 
+</script>
+<link rel="stylesheet" type="text/css" href="main.css">
+<title> IAX Config</title>
+
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+<P>
+<center><h2>Audio Settings</h2></center><p>
+<meter value="2" min="0" max="10">2 out of 10</meter><br>
+<meter value="0.6">60%</meter>
+
+
+<table width="50%" cellpadding="5" border = "1" cellsapcing ="2">
+<caption>Live Receive Transmit Audio Settings</caption>
+<tr>
+<td> Rx Audio settings</td>
+<td><div class="slidecontainer">
+<input text="RX" type="range" min="1" max="900" value="250" class="slider" id="rxaudio">
+<span id="demo"></span>
+</div>
+</td>
+<td>  </td>
+
+</tr>
+
+<tr>
+<td> Transmit A Level</td>
+<td><div class="slidecontainer">
+<input text="RX" type="range" min="1" max="900" value="350" class="slider" id="txaudioa">
+</div>
+</td>
+<td>350 </td>
+</tr>
+
+<tr>
+<td> Transmit B Level</td>
+<td><div class="slidecontainer">
+<input text="RX" type="range" min="1" max="900" value="0" class="slider" id="txaudiob">
+</div>
+</td>
+<td>0 </td>
+</tr>
+
+</table>
+
+<P>
+
+
+
+
+<table  width="50%" cellpadding="5" border = "1" cellsapcing ="2">
+<caption>Test Modes</caption>
+<tr>
+<td> COS </td>
+<td> <label class="switch">
+  <input type="checkbox">
+  <span class="slider2"></span>
+</label>  </td>
+</tr>
+
+<tr>
+<td> PTT</td>
+<td>  <label class="switch">
+  <input type="checkbox">
+  <span class="slider2"></span>
+</label> </td>
+</tr>
+
+<tr>
+<td> CTCSS</td>
+<td> <label class="switch">
+  <input type="checkbox">
+  <span class="slider2"></span>
+</label>  </td>
+</tr>
+
+
+<tr>
+<td> Toggle Transmit Test Tone/Keying </td>
+<td>  <label class="switch">
+  <input type="checkbox">
+  <span class="slider2"></span>
+</label>  </td>
+</tr>
+
+<tr>
+<td> PRE-emphasis Mode </td>
+<td>
+ <select>
+  <option value="OFF">OFF</option>
+  <option value="ON">ON</option>
+</select>  
+
+ </td>
+</tr>
+
+<tr>
+<td> PLfilter Mode</td>
+<td>  <select>
+  <option value="OFF"> OFF</option>
+  <option value="ON">ON</option>
+</select>   
+</td>
+</tr>
+
+<tr>
+<td>  COSFROM Mode </td>
+<td> <select>
+  <option value="USB">USB</option>
+  <option value="INVERTUSB">USB INVERT</option>
+</select>  
+</td>
+</tr>
+
+<tr>
+<td> RX Boost Mode </td>
+<td> <form>
+  <input type="radio" name="rxboost" value="boost" >  <br>
+</form>  </td>
+</tr>
+<tr>
+<td> </td>
+<td> <label class="switch">
+  <input type="checkbox">
+  <span class="slider2"></span>
+</label> </td>
+</tr>
+
+</table>
+
+
+
+
+ <p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+</div>
+</body>
+
+</html>

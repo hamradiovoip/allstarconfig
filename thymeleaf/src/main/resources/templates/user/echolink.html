@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<title> Allstar Node 1999 Page</title>
+
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+<P>
+<center><h2>Allstar Node Echolink Settings</h2></center><p>
+
+
+<strong>Echolink Settings</strong><br>
+
+
+<table class="table1">
+<th> Maditory Settings</th>
+<tr><td> RX</td>   <td><input type="text" name="rx" value="-3"></td></tr>
+<tr><td>TX</td>  <td> <input type="text" name="tx" value="3"></td></tr>
+<tr><td> Callsign</td>  <td> <input type="text" name="call" value=""></td></tr>
+<tr><td> Password</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> QTH</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Email</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Echo Link Node Number</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Allstar Node Number</td>  <td> <input type="text" name="" value=""></td></tr>
+</table>
+&nbsp;&nbsp; <P>
+<table class="table1">
+<th> Optional Settings</th>
+
+<tr><td> Lat</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Long</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Freq</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> PL Tone</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Power</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Ant Type</td>  <td> <input type="text" name="" value=""></td></tr>
+<tr><td> Max Stations </td>  <td> <input type="text" name="" value="20"></td></tr>
+<tr><td> rtcptimeout</td>  <td> <input type="text" name="" value="10"></td></tr>
+</table> 
+<P>
+
+&nbsp;&nbsp; <P>
+<input class="button1"  type="submit" value="Save Settings"><P>
+&nbsp;&nbsp; <P>
+&nbsp;&nbsp; <P>
+</div>
+</body>
+
+</html>

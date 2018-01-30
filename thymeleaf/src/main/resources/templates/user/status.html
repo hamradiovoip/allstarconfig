@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<title> Allstar Node Status</title>
+
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+<P>
+<center><h2>Node Status</h2></center><p>
+
+
+<strong>Connected Nodes</strong><br>
+<table class="table1">
+<th> Node </th><th> Call</th> <th> Node Info</th> <th> Freq </th> <th> Location </th>
+
+<tr>
+<td> 27516</td>
+<td> KD3SU</td>
+<td> Linked to IRLP 0051</td>
+<td> None</td>
+<td> Boonsboro, MD USA	</td>
+</tr>
+
+<tr>
+<td>43793 </td>
+<td> KD3SU</td>
+<td> Echolink KD3SU-L</td>
+<td> None</td>
+<td> Boonsboro, MD USA	</td>
+</tr>
+
+<tr>
+<td> 27313</td>
+<td> KD3SU</td>
+<td> </td>
+<td> 147.440 </td>
+<td> Boonsboro, MD USA	</td>
+</tr>
+
+<tr>
+<td> 43794</td>
+<td> KD3SU</td>
+<td> </td>
+<td> </td>
+<td> Boonsboro, MD USA	</td>
+</tr>
+
+</table>
+
+
+<!-- http://stats.allstarlink.org/jsondata.cgi -->
+
+
+&nbsp;&nbsp; <P>
+
+</div>
+</body>
+
+</html>

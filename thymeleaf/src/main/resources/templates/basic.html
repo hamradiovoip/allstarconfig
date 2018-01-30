@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<title> Allstar Node 1999 Page</title>
+
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+<P>
+<center><h2>Node number 1999 Basic Settings</h2></center><p>
+
+<strong>Repeater/Simplex node settings</strong>
+<p>
+ <select>
+  <option value="simplex">Simplex</option>
+  <option value="repeater">Repeater</option>
+  <option value="full">Full Duplex</option>  
+</select> 
+<P>
+
+<strong>Telemetry </strong>
+<br>
+ <form>
+  <input type="radio" name="tones" value="tones" > Tones<br>
+  <input type="radio" name="voice" value="voice"> Voice<br>
+  <input type="radio" name="cw" value="cw"> CW <br>
+</form> 
+<p>
+
+<strong><b>CW ID</b></strong>
+<table>
+<tr>
+<td>Speed</td> <td><input type="text" name="speed" value="20"></td>
+</tr>
+<tr>
+<td>Amplitude</td>  <td><input type="text" name="amp" value="4000"></td>
+</tr>
+<tr>
+<td>Freq</td><td><input type="text" name="freq" value="400"></td>
+</tr>
+<tr>
+<td>ID Amplitude </td> <td> <input type="text" name="idamp" value="1024"></td>
+</tr>
+<tr>
+<td>Call Sign</td> <td><input type="text" name="call" value="KD3SU"></td>
+</tr>
+
+</table> <p>
+
+
+<strong><b>Timers</b></strong>
+<table>
+
+<tr><td>hangtime</td> <td><input type="text" name="hang" value = "100"> </td><td>squelch tail hang time (in ms)</td></tr>
+
+<tr><td>althangtime</td><td><input type="text" name="althang" value = "100"> </td> <td>length of the node hang time when the alternate hang timer is selected</td></tr>
+                                
+<tr><td>tx_timeout</td> <td><input type="text" name="txtimeout"value = "240000"> </td>    <td>changed from totime V1.3</td></tr>
+                                
+                                
+<tr><td>idtime </td><td><input type="text" name="idtime" value = "600000"> </td><td> default 10 minutes</td></tr>
+                                
+<tr><td>politeid </td><td><input type="text" name="polite" value = "30000"> </td> <td></td> </tr>
+</table>
+<P>
+
+
+<h1>...</h1>
+
+
+<input type="submit" value="Reset to Defaults">
+<input type="submit" value="Save"><P>
+
+
+ <p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+</div>
+</body>
+
+</html>

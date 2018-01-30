@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<th:block th:fragment="header">
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <a class="navbar-brand" th:href="@{/index}">
+                    <img th:src="@{/img/logo.png}" width="120" height="56" alt="missing logo"/>
+                </a>
+    </div>
+    <ul class="nav navbar-nav">      
+      
+        <li><a th:href="@{/status}">Status</a></li>
+        
+         <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Basic Configuration
+        <span class="caret"></span></a>
+        
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/basic}">Basic Settings</a></li>                    
+          <li><a th:href="@{/echolink}">Echolink</a></li>
+        </ul>
+      </li>
+        
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Advance Configuration
+        <span class="caret"></span></a>
+        
+        <ul class="dropdown-menu">          
+           <li><a th:href="@{/rpt}">RPT Settings</a></li>
+           <li><a th:href="@{/simpleusb}">Simple USB Settings</a></li>
+          <li><a th:href="@{/iax}">IAX</a></li>          
+        </ul>
+      </li>
+       <li><a th:href="@{/audio}">Audio Levels</a></li>
+      <li><a th:href="@{/controller}">Node Control</a></li>
+      <li><a th:href="@{/live}">Live Audio</a></li>
+      <li><a th:href="@{/webtrans}">Webtranseiver</a></li>
+        
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
+        <span class="caret"></span></a>
+        
+        <ul class="dropdown-menu">          
+           <li><a th:href="@{/userconfig}">User Settings</a></li>
+          <li><a th:href="@{/passwd}">Change Password</a></li>
+          <li><a th:href="@{/log}">View Logs</a></li>          
+          <li><a th:href="@{/}">Profile</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{/help}"><span class="glyphicon glyphicon-user"></span> Help</a></li>
+      <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav> 
+<!-- 
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">
+                    <img th:src="@{/img/logo.png}" alt="missing logo"/>
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a th:href="@{/}">Home</a>
+                        <a th:href="@{/}">Basic</a>
+                        <a th:href="@{/}">Help</a>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    -->
+    
+</th:block>
+</body>
+</html>

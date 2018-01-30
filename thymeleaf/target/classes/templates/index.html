@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Index</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <center><h2>Allstar Link Config</h2></center>
+    
+    Welcome to the Allstar configuration page.<p>    
+   
+  <P>&nbsp;&nbsp; <P>
+    
+    This site uses Spring framework, Thymeleaf templates and Java. 
+    
+        <P>&nbsp;&nbsp; <P>
+    <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/overview.html#overview"> Spring</a> 
+        <P>&nbsp;&nbsp; <P>
+    <a href="http://www.thymeleaf.org/"> Thymeleaf</a>
+    <P>&nbsp;&nbsp; <P>
+        <P>&nbsp;&nbsp; <P>
+    The only thing you need to install this system is Java 8 installed on the node and the 1 jar file that runs.
+    The jar contains the web server, Tomcat, and all the code and HTML for it to work. It could be setup as a 
+    service. If the demands on a Pi are too much it could be run on the Allstar.org site with a simple service/server on the node machine 
+    would use a secure socket connection.  
+      
+    <P>&nbsp;&nbsp; <P>
+    
+    
+   
+    
+   
+<P>&nbsp;&nbsp; <P>
+    You must login to use the tools<p>
+    <a th:href="@{/login}">Login Page</a>    
+
+
+</div>
+</body>
+</html>

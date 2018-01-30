@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Spring Security - thymeleaf
+Implementation-Version: 1.0.0-SNAPSHOT
+Built-By: thorn
+Implementation-Vendor-Id: org.allstar.spring.security
+Build-Jdk: 1.8.0_111
+Implementation-URL: http://projects.spring.io/spring-boot/thymeleaf/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
