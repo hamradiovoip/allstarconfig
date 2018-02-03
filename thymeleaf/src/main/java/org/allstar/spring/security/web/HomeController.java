@@ -11,10 +11,15 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.json.simple.JSONObject;
@@ -24,6 +29,7 @@ import org.json.JSONException;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.allstar.config.data.RptConfigData;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -67,8 +73,19 @@ public class HomeController {
         return "error/access-denied";
     }
     
-    @GetMapping("/basic")
-    public String basic() {
+    @RequestMapping(value = "/basic",  method = RequestMethod.POST)
+    public String basic(@Valid @ModelAttribute("save") RptConfigData data, 
+    	      BindingResult result, ModelMap model) {
+    	if (result.hasErrors()) {
+            return "error";
+    	}
+    	
+    	// model.addAttribute("name", data.getName());
+        
+    	/* save data user typed in and create a file to save to disk */
+    	
+    	
+    	
         return "user/basic";
     }
 
@@ -175,7 +192,7 @@ public class HomeController {
 			}
 		
 			
-			 JSONArray array = (JSONArray) obj;
+		//	 JSONArray array = (JSONArray) obj;
 						 	 
 			 
 			// JSONArray array = new JSONArray();
@@ -190,14 +207,14 @@ public class HomeController {
 			 */
 		//JSONArray arr = ((Object) obj).getJSONArray("posts");
 			 
-    	 JSONObject site = (JSONObject)array.get(0); 
+  //  	 JSONObject site = (JSONObject)array.get(0); 
     	//  String test = (String) site.get("27265");
     	
-    	if(site != null)
-    		mav.addObject("json",site); // array.get(0));
-    	else
+  //  	if(site != null)
+  //  		mav.addObject("json",site); // array.get(0));
+  //  	else
     	
-    		mav.addObject("json", "ERROR");
+ //   		mav.addObject("json", "ERROR");
     	return mav; 
        
     }

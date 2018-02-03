@@ -4,6 +4,12 @@ public class RptConfigData {
 
 	
 	
+	
+	
+	
+	
+	
+	
 	/*
 	; Radio Repeater configuration file (for use with app_rpt)
 
