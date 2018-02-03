@@ -1,4 +1,4 @@
-package org.allstar.spring.web;
+package org.allstar.spring.security.web;
 
 import java.io.BufferedReader;
 import java.io.File;

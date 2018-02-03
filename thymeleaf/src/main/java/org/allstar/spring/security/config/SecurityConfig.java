@@ -1,6 +1,6 @@
-package org.allstar.spring.config;
+package org.allstar.spring.security.config;
 
-import org.allstar.spring.web.LoggingAccessDeniedHandler;
+import org.allstar.spring.security.web.LoggingAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(
                             "/",
                             "/js/**",
+                            "/html/**",
                             "/css/**",
                             "/img/**",
                             "/webjars/**").permitAll()

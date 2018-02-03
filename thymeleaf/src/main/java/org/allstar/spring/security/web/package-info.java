@@ -5,4 +5,4 @@
  * @author thorn
  *
  */
-package org.allstar.spring.web;
+package org.allstar.spring.security.web;
