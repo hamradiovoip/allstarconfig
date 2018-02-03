@@ -11,13 +11,16 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -73,6 +76,15 @@ public class HomeController {
         return "error/access-denied";
     }
     
+    @GetMapping("/basic")
+    public String basic() {
+    	
+    	
+        return "user/basic";
+    }
+
+    
+    /*
     @RequestMapping(value = "/basic",  method = RequestMethod.POST)
     public String basic(@Valid @ModelAttribute("save") RptConfigData data, 
     	      BindingResult result, ModelMap model) {
@@ -82,12 +94,14 @@ public class HomeController {
     	
     	// model.addAttribute("name", data.getName());
         
-    	/* save data user typed in and create a file to save to disk */
+    //	 save data user typed in and create a file to save to disk 
     	
     	
     	
         return "user/basic";
     }
+
+*/
 
     @GetMapping("/iax")
     public String iax() {
@@ -229,9 +243,34 @@ public class HomeController {
         return "user/home";
     }
     @GetMapping("/rpt")
-    public String rpt() {
+    public String rpt(Model model) {
+    	
+    	   	
+    	RptConfigData rpt = new RptConfigData();
+    	
+    	
+    	model.addAttribute("rpt", rpt); 
+        	
         return "user/rpt";
     }
+    
+    @PostMapping("/rpt")
+    public String rptSubmit(@ModelAttribute RptConfigData rpt,  Model model) 
+    {   	
+    	   	
+    	
+    	String node = rpt.nodeNumber;
+    	String ch = rpt.rxChannel; 
+    	String call= rpt.call;
+    	String duplex= rpt.duplex;
+    	
+    	rpt = new RptConfigData(ch, node, call, duplex);
+    	    	
+    	model.addAttribute("rpt", rpt);    	 	
+    
+        return "user/rptresults";
+    }
+    
     @GetMapping("/simpleusb")
     public String simpleusb() {
         return "user/simpleusb";
