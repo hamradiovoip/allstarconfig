@@ -285,8 +285,29 @@ public class HomeController {
         return "user/webtrans";
     }
     
-    
+    /*
+    @RequestMapping(value="/getpdf", method=RequestMethod.POST)
+    public ResponseEntity<byte[]> getPDF(@RequestBody String json) {
+        // convert JSON to Employee 
+        Employee emp = convertSomehow(json);
 
+        // generate the file
+        PdfUtil.showHelp(emp);
+
+        // retrieve contents of "C:/tmp/report.pdf" that were written in showHelp
+        byte[] contents = (...);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.parseMediaType("application/pdf"));
+        String filename = "output.pdf";
+        headers.setContentDispositionFormData(filename, filename);
+        headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+        ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(contents, headers, HttpStatus.OK);
+        return response;
+    }
+*/
+    
+    
 @RequestMapping(value="/zip", produces="application/zip")
 public void zipFiles(HttpServletResponse response) throws IOException {
 
