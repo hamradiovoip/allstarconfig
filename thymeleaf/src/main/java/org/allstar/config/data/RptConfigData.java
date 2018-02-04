@@ -93,7 +93,7 @@ public class RptConfigData {
 	    lineStr = new StringBuffer("        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n");
 	    s = new StringBuffer("; Radio Repeater configuration file (for use with app_rpt)\n");
 
-	   s.append(" ");
+	   s.append(" \n");
 	   s.append("; Your Repeater\n"); 
 	 s.append("["+nodeNumber+ "] ; Change this to your assigned node number ");
 	 s.append("; Must also be enabled in modules.conf\n");
@@ -769,7 +769,7 @@ public class RptConfigData {
 	 		"	#includeifexists custom/rpt.conf\n");
 	 
 	 s.append(lineStr);
-	 s.append("end \n");
+	 s.append(";end \n");
 		
 			 		
 	  this.resultsStr= s.toString();

@@ -7,10 +7,6 @@ public class IaxConfigData {
 	String bindaddr ="192.168.0.1"; //not always used
 	String disallow ="all";
 	String allow = "";
-	/*allow = ulaw			; best		87 kbps
-      allow = adpcm			; good		55 kbps
-      allow = gsm			; medicore	36 kbps
-     */
 	Boolean jitterbuffer = true;                                                                
 	Boolean	forcejitterbuffer = true;                                                           
 	int	dropcount = 2;                                                                     
@@ -25,128 +21,166 @@ public class IaxConfigData {
 	Boolean delayreject = true;     //yes                                                            
 	//		; iaxthreadcount = 30                                                              
 	//		; iaxmaxthreadcount = 150  
-			
-			
-	/*
-	 * 
-	 ; Inter-Asterisk eXchange driver definition
-; http://docs.allstarlink.org/drupal/node/15 
-
-; ulaw, alaw, GSM and ADPCM should only be used, 
-; the rest of the standard Asterisk codecs
-; (speex, ilbc, lpc10, etc) should be avoided.
-
-; The ulaw and alaw codecs have the best audio quality,
-; followed by ADPCM, and lastly GSM,
-; Bandwidth used is in the reverse order to audio quality. 
-; GSM uses the least bandwidth, and alaw/ulaw the most. 
-
-; CODEC         AUDIO QUALITY           BANDWIDTH (including IP and Ethernet headers)
-; ULAW          best                    87 kbps
-; ADPCM         good                    55 kbps
-; GSM           mediocre                36 kbps
-
-
-[general]
-bindport = 4569			; bindport and bindaddr may be specified
-                                ; NOTE: bindport must be specified BEFORE
-				; bindaddr or may be specified on a specific
-				; bindaddr if followed by colon and port
-				;  (e.g. bindaddr=192.168.0.1:4569)
-
-; bindaddr = 192.168.0.1	; more than once to bind to multiple
-                                ; addresses, but the first will be the 
-                                ; default
-
-disallow = all			; The permitted codecs for outgoing connections 
-				; Audio Quality	Bandwidth
-allow = ulaw			; best		87 kbps
-allow = adpcm			; good		55 kbps
-allow = gsm			; medicore	36 kbps
-
-jitterbuffer = yes                                                                
-forcejitterbuffer = yes                                                           
-dropcount = 2                                                                     
-maxjitterbuffer = 4000                                                            
-maxjitterinterps = 10                                                             
-resyncthreshold = 1000                                                            
-maxexcessbuffer = 80                                                              
-minexcessbuffer = 10                                                              
-jittershrinkrate = 1                                                              
-tos = 0x1E                                                                  
-autokill = yes                                                                    
-delayreject = yes                                                                 
-; iaxthreadcount = 30                                                              
-; iaxmaxthreadcount = 150   
-
-; register = 1999:123456@register.allstarlink.org	; This must be changed to your node number, password 
-                                                	; remove the leading ";"
-
-; Incoming radio connections
-
-[radio]
-type = user
-disallow = all
-allow = ulaw
-allow = adpcm
-allow = gsm
-
-codecpriority = host
-context = radio-secure
-transfer = no
-
-[iaxrpt]                        	; Connect from iaxrpt Username field (PC AllStar Client)
-type = user                       	; Notice type is user here <---------------
-context = iaxrpt			; Context to jump to in extensions.conf
-auth = md5
-secret = Your_Secret_Pasword_Here
-host = dynamic
-disallow = all                    
-allow = ulaw
-allow = adpcm
-allow = gsm                       
-transfer = no
-
-[iaxclient]                     	; Connect from iax client (Zoiper...)
-type = friend                     	; Notice type here is friend <--------------
-context = iax-client              	; Context to jump to in extensions.conf
-auth = md5
-secret = Your_Secret_Password_Here
-host = dynamic
-disallow = all
-allow = ulaw
-allow = adpcm
-allow = gsm
-transfer = no
-
-[allstar-sys]
-type = user
-context = allstar-sys
-auth = rsa
-inkeys = allstar
-disallow = all
-allow = ulaw
-
-[allstar-public]
-type = user
-context = allstar-public
-auth = md5
-secret = allstar
-disallow = all
-allow = ulaw
-allow = gsm
-
-; The following should be un-commented to support Allstar Autopatch service
-; [allstar-autopatch]
-; type = peer
-; host = register.allstarlink.org
-; username = <One of the Node numbers on this server>
-; secret = <The node password for the above node>
-; auth = md5
-; disallow = all
-; allow = ulaw
-; transfer = no
-
-#includeifexists custom/iax.conf
-*/
+	
+	StringBuffer s;
+	public String resultsStr = "none";
+	
+	
+	String buildIAX()
+	{
+	
+	   s.append(" ; Inter-Asterisk eXchange driver definition\n" + 
+	   		"; http://docs.allstarlink.org/drupal/node/15 \n" + 
+	   		"\n" + 
+	   		"; ulaw, alaw, GSM and ADPCM should only be used, \n" + 
+	   		"; the rest of the standard Asterisk codecs\n" + 
+	   		"; (speex, ilbc, lpc10, etc) should be avoided.\n" + 
+	   		"\n" + 
+	   		"; The ulaw and alaw codecs have the best audio quality,\n" + 
+	   		"; followed by ADPCM, and lastly GSM,\n" + 
+	   		"; Bandwidth used is in the reverse order to audio quality. \n" + 
+	   		"; GSM uses the least bandwidth, and alaw/ulaw the most. \n" + 
+	   		"\n" + 
+	   		"; CODEC         AUDIO QUALITY           BANDWIDTH (including IP and Ethernet headers)\n" + 
+	   		"; ULAW          best                    87 kbps\n" + 
+	   		"; ADPCM         good                    55 kbps\n" + 
+	   		"; GSM           mediocre                36 kbps\n" + 
+	   		"\n");
+	   s.append("[general]\n" + 
+	   		"bindport = "+ bindport +"			; bindport and bindaddr may be specified\n" + 
+	   		"                                ; NOTE: bindport must be specified BEFORE\n" + 
+	   		"				; bindaddr or may be specified on a specific\n" + 
+	   		"				; bindaddr if followed by colon and port\n" + 
+	   		"				;  (e.g. bindaddr=192.168.0.1:4569)\n" + 
+	   		"\n" + 
+	   		"; bindaddr = 192.168.0.1	; more than once to bind to multiple\n" + 
+	   		"                                ; addresses, but the first will be the \n" + 
+	   		"                                ; default\n" + 
+	   		"\n" + 
+	   		"disallow = all			; The permitted codecs for outgoing connections \n" + 
+	   		"				; Audio Quality	Bandwidth\n" + 
+	   		"allow = ulaw			; best		87 kbps\n" + 
+	   		"allow = adpcm			; good		55 kbps\n" + 
+	   		"allow = gsm			; medicore	36 kbps\n" + 
+	   		" \n");
+	   s.append(" jitterbuffer = yes                                                           \n" + 
+	   		"forcejitterbuffer = yes                                                           \n" + 
+	   		"dropcount = 2                                                                     \n" + 
+	   		"maxjitterbuffer = 4000                                                            \n" + 
+	   		"maxjitterinterps = 10                                                             \n" + 
+	   		"resyncthreshold = 1000                                                            \n" + 
+	   		"maxexcessbuffer = 80                                                              \n" + 
+	   		"minexcessbuffer = 10                                                              \n" + 
+	   		"jittershrinkrate = 1                                                              \n" + 
+	   		"tos = 0x1E                                                                        \n" + 
+	   		"autokill = yes                                                                    \n" + 
+	   		"delayreject = yes                                                                 \n" + 
+	   		"; iaxthreadcount = 30                                                             \n" + 
+	   		"; iaxmaxthreadcount = 150   \n" + 
+	   		"\n");
+	   s.append(" ; register = 1999:123456@register.allstarlink.org	; This must be changed to your node number, password \n" + 
+	   		    "     	; remove the leading \";\"\n");
+	   s.append("                                          \n" + 
+	   		"\n" + 
+	   		"; Incoming radio connections\n" + 
+	   		"\n" + 
+	   		"[radio]\n" + 
+	   		"type = user\n" + 
+	   		"disallow = all\n" + 
+	   		"allow = ulaw\n" + 
+	   		"allow = adpcm\n" + 
+	   		"allow = gsm\n" + 
+	   		"\n" + 
+	   		"codecpriority = host\n" + 
+	   		"context = radio-secure\n" + 
+	   		"transfer = no\n");
+	   
+	   s.append(" [iaxrpt]                        	; Connect from iaxrpt Username field (PC AllStar Client)\n" + 
+	   		"type = user                       	; Notice type is user here <---------------\n" + 
+	   		"context = iaxrpt			; Context to jump to in extensions.conf\n" + 
+	   		"auth = md5\n" + 
+	   		"secret = Your_Secret_Pasword_Here\n" + 
+	   		"host = dynamic\n" + 
+	   		"disallow = all                    \n" + 
+	   		"allow = ulaw\n" + 
+	   		"allow = adpcm\n" + 
+	   		"allow = gsm                       \n" + 
+	   		"transfer = no\n");
+	   s.append(" [iaxrpt]                        	; Connect from iaxrpt Username field (PC AllStar Client)\n" + 
+	   		"type = user                       	; Notice type is user here <---------------\n" + 
+	   		"context = iaxrpt			; Context to jump to in extensions.conf\n" + 
+	   		"auth = md5\n" + 
+	   		"secret = Your_Secret_Pasword_Here\n" + 
+	   		"host = dynamic\n" + 
+	   		"disallow = all                    \n" + 
+	   		"allow = ulaw\n" + 
+	   		"allow = adpcm\n" + 
+	   		"allow = gsm                       \n" + 
+	   		"transfer = no\n");
+	   s.append(" [iaxrpt]                        	; Connect from iaxrpt Username field (PC AllStar Client)\n" + 
+	   		"type = user                       	; Notice type is user here <---------------\n" + 
+	   		"context = iaxrpt			; Context to jump to in extensions.conf\n" + 
+	   		"auth = md5\n" + 
+	   		"secret = Your_Secret_Pasword_Here\n" + 
+	   		"host = dynamic\n" + 
+	   		"disallow = all                    \n" + 
+	   		"allow = ulaw\n" + 
+	   		"allow = adpcm\n" + 
+	   		"allow = gsm                       \n" + 
+	   		"transfer = no\n");
+	   s.append(" [iaxclient]                     	; Connect from iax client (Zoiper...)\n" + 
+	   		"type = friend                     	; Notice type here is friend <--------------\n" + 
+	   		"context = iax-client              	; Context to jump to in extensions.conf\n" + 
+	   		"auth = md5\n" + 
+	   		"secret = Your_Secret_Password_Here\n" + 
+	   		"host = dynamic\n" + 
+	   		"disallow = all\n" + 
+	   		"allow = ulaw\n" + 
+	   		"allow = adpcm\n" + 
+	   		"allow = gsm\n" + 
+	   		"transfer = no\n");
+	   s.append(" [iaxclient]                     	; Connect from iax client (Zoiper...)\n" + 
+	   		"type = friend                     	; Notice type here is friend <--------------\n" + 
+	   		"context = iax-client              	; Context to jump to in extensions.conf\n" + 
+	   		"auth = md5\n" + 
+	   		"secret = Your_Secret_Password_Here\n" + 
+	   		"host = dynamic\n" + 
+	   		"disallow = all\n" + 
+	   		"allow = ulaw\n" + 
+	   		"allow = adpcm\n" + 
+	   		"allow = gsm\n" + 
+	   		"transfer = no\n");
+	   s.append(" [allstar-sys]\n" + 
+	   		"type = user\n" + 
+	   		"context = allstar-sys\n" + 
+	   		"auth = rsa\n" + 
+	   		"inkeys = allstar\n" + 
+	   		"disallow = all\n" + 
+	   		"allow = ulaw\n");
+	   s.append("[allstar-public]\n" + 
+	   		"type = user\n" + 
+	   		"context = allstar-public\n" + 
+	   		"auth = md5\n" + 
+	   		"secret = allstar\n" + 
+	   		"disallow = all\n" + 
+	   		"allow = ulaw\n" + 
+	   		"allow = gsm \n");
+	   s.append("; The following should be un-commented to support Allstar Autopatch service\n" + 
+	   		"; [allstar-autopatch]\n" + 
+	   		"; type = peer\n" + 
+	   		"; host = register.allstarlink.org\n" + 
+	   		"; username = <One of the Node numbers on this server>\n" + 
+	   		"; secret = <The node password for the above node>\n" + 
+	   		"; auth = md5\n" + 
+	   		"; disallow = all\n" + 
+	   		"; allow = ulaw\n" + 
+	   		"; transfer = no\n" + 
+	   		"\n" + 
+	   		"#includeifexists custom/iax.conf \n");
+	 	
+				 		
+	   this.resultsStr= s.toString();
+	   return(resultsStr);
+	   
+	}
 }
