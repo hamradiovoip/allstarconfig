@@ -25,10 +25,11 @@ public class EchoLinkConfigData {
 	public String resultsStr = "none";
 	
 	/* Constructor 
-	 * 
+	 * node = echolink node number
 	 * 
 	 */
-	EchoLinkConfigData(String call, String pwd, String name,String qth, String email, String node)
+	EchoLinkConfigData(String call, String pwd, String name,String qth,
+			           String email, String node, String astnode)
 	{
 		
 		this.call = call;
@@ -37,6 +38,7 @@ public class EchoLinkConfigData {
 		this.qth  = qth;
 		this.email = email;
 		this.node  = node;		
+		this.astnode = astnode;
 	}
 
 
@@ -141,7 +143,6 @@ public class EchoLinkConfigData {
 
 			 
 	
-
 	/*
 	 * node
 	 */
@@ -161,22 +162,46 @@ public class EchoLinkConfigData {
 
 	}
 
-			 
+
+	/*
+	 * astnode
+	 */
+	String getastnode() 
+	{
+		return(this.astnode);
+
+	}
+
+
+	/*
+	 * astnode
+	 */
+	void setastnode(String astnode)
+	{
+		this.astnode =  astnode;
+
+	}
 	
-			 
+	
+	
+	
+	
+	/*
+	 * 	buildEcholink() - 	 	 
+	 */
 	
 	String buildEcholink()
 	{
 	
 		s.append(" [el0]\n" + 
-				"call = INVALID				; Change this!\n" + 
-				"pwd = INVALID				; Change this!\n" + 
-				"name = YOUR NAME			; Change this!\n" + 
-				"qth = INVALID				; Change this!\n" + 
-				"email = INVALID				; Change this!\n" + 
-				"node = 000000                           ; Change this!\n");
-		s.append(" node = 000000                           ; Change this!\n" + 
-				"; Data for EchoLink Status Page\n" + 
+				"call = " + call + "				; Change this!\n" + 
+				
+				"pwd = "+ pwd +"				; Change this!\n" + 
+				"name = "+ name +"			; Change this!\n" + 
+				"qth = "+ qth +"				; Change this!\n" + 
+				"email = "+ email +"				; Change this!\n" + 
+				"node = "+ node +"                           ; Change this!\n");
+		s.append("; Data for EchoLink Status Page\n" + 
 				"lat = 0.0				; Latitude in decimal degrees\n" + 
 				"lon = 0.0				; Longitude in decimal degrees\n" + 
 				"freq = 0.0                              ; not mandatory Frequency in MHz\n" + 
@@ -190,7 +215,7 @@ public class EchoLinkConfigData {
 				"\n" + 
 				"rtcptimeout = 10			; Max number of missed heartbeats from EL\n" + 
 				"recfile = /tmp/echolink_recorded.gsm	;\n" + 
-				"astnode = 1999				; Change this!\n" + 
+				"astnode = "+astnode+"				; Change this!\n" + 
 				"context = radio-secure			; Default in code is echolink-in\n");
 		s.append("\n" + 
 				"; Max 3 servers\n" + 
@@ -217,9 +242,7 @@ public class EchoLinkConfigData {
 				"#includeifexists custom/echolink.conf\n");
 
 		this.resultsStr= s.toString();
-		return(resultsStr);
-
-		
+		return(resultsStr);		
 		
 	}
 }
