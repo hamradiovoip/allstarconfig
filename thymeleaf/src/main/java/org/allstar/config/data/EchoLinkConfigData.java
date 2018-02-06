@@ -24,6 +24,146 @@ public class EchoLinkConfigData {
 	StringBuffer s;
 	public String resultsStr = "none";
 	
+	/* Constructor 
+	 * 
+	 * 
+	 */
+	EchoLinkConfigData(String call, String pwd, String name,String qth, String email, String node)
+	{
+		
+		this.call = call;
+		this.pwd = pwd;
+		this.name  = name;
+		this.qth  = qth;
+		this.email = email;
+		this.node  = node;		
+	}
+
+
+	/*
+	 * call
+	 */
+	String getcall() 
+	{
+		return(this.call);
+
+	}
+
+
+	/*
+	 * call
+	 */
+	void setcall(String call)
+	{
+		this.call = call;
+
+	}
+
+	/*
+	 * pwd
+	 */
+	String getpwd() 
+	{
+		return(this.pwd);
+
+	}
+
+
+	/*
+	 * pwd
+	 */
+	void setpwd(String pwd)
+	{
+		this.pwd = pwd;
+
+	}
+
+
+
+	/*
+	 * name
+	 */
+	String getname() 
+	{
+		return(this.name);
+
+	}
+
+
+	/*
+	 * name
+	 */
+	void setname(String name)
+	{
+		this.name = name;
+
+	}
+
+
+	/*
+	 * qth
+	 */
+	String getqth() 
+	{
+		return(this.qth);
+
+	}
+
+
+	/*
+	 * qth
+	 */
+	void setqth(String qth)
+	{
+		this.qth =  qth;
+
+	}
+
+
+	/*
+	 * email
+	 */
+	String getemail() 
+	{
+		return(this.email);
+
+	}
+
+
+	/*
+	 * email
+	 */
+	void setemail(String email)
+	{
+		this.email =  email;
+
+	}
+
+			 
+	
+
+	/*
+	 * node
+	 */
+	String getnode() 
+	{
+		return(this.node);
+
+	}
+
+
+	/*
+	 * node
+	 */
+	void setnode(String node)
+	{
+		this.node =  node;
+
+	}
+
+			 
+	
+			 
 	
 	String buildEcholink()
 	{
