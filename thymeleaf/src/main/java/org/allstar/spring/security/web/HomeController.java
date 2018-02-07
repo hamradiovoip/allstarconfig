@@ -282,20 +282,20 @@ public class HomeController {
     }
     
     @PostMapping("/echolink")
-    public String echolSubmit(@ModelAttribute EchoLinkConfigData echo,  Model model) 
+    public String echolSubmit(@ModelAttribute EchoLinkConfigData echolink,  Model model) 
     {   	
     	   	    	
-    	String  node = echo.node;
-    	String  pwd = echo.pwd; 
-    	String  name = echo.name;
-    	String  call= echo.call;
-    	String  astnode = echo.astnode;
-    	String  qth= echo.qth;
-    	String  email= echo.email;    	
+    	String  node = echolink.node;
+    	String  pwd = echolink.pwd; 
+    	String  name = echolink.name;
+    	String  call= echolink.call;
+    	String  astnode = echolink.astnode;
+    	String  qth= echolink.qth;
+    	String  email= echolink.email;    	
 
-    	echo = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode);
+    	echolink = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode);
 
-    	model.addAttribute("echo", echo);    	 	
+    	model.addAttribute("echolink", echolink);    	 	
 
         return "user/echoresults";
     }

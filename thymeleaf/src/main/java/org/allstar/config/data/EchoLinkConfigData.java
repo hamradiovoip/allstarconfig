@@ -4,12 +4,12 @@ package org.allstar.config.data;
 public class EchoLinkConfigData {
 
 	
-	public String call = "NVALID";			//	; Change this!
-	public String pwd = "INVALID";			//	; Change this!
-	public String name = "YOUR NAME";			//; Change this!
-	public String qth = "INVALID";			//	; Change this!
-	public String email = "INVALID";			//	; Change this!
-	public String node = "000000" ;             //             ; Change this!
+	public String call = "";			//	; Change this!
+	public String pwd = "";			//	; Change this!
+	public String name = "";			//; Change this!
+	public String qth = "";			//	; Change this!
+	public String email = "";			//	; Change this!
+	public String node = "" ;             //             ; Change this!
 	//; Data for EchoLink Status Page
 	String lat = "0.0";				//; Latitude in decimal degrees
 	String lon = "0.0";				//; Longitude in decimal degrees
