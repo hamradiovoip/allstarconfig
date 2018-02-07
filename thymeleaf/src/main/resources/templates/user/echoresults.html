@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>echolink</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <center><h2>Allstar Link Config</h2></center>
+    &nbsp;&nbsp; <P>
+
+<pre>
+<p th:text="${echo.resultsStr}" />
+<a href="/echolink">Submit another echo.config file</a>
+</pre>
+
+</div>
+</body>
+</html>
+    
+    

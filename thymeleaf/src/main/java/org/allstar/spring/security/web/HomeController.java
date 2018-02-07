@@ -32,6 +32,7 @@ import org.json.JSONException;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.allstar.config.data.EchoLinkConfigData;
 import org.allstar.config.data.RptConfigData;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -108,10 +109,6 @@ public class HomeController {
         return "user/iax";
     }
 
-    @GetMapping("/echolink")
-    public String echolink() {
-        return "user/echolink";
-    }
 
     @GetMapping("/log")
     public String log() {
@@ -270,6 +267,40 @@ public class HomeController {
     
         return "user/rptresults";
     }
+    
+   
+  
+    @GetMapping("/echolink")
+    public  String echolink(Model model) {
+    	
+    	   	
+    	EchoLinkConfigData echolink = new EchoLinkConfigData();    	
+    	
+    	model.addAttribute("echolink", echolink); 
+        	
+        return "user/echolink";
+    }
+    
+    @PostMapping("/echolink")
+    public String echolSubmit(@ModelAttribute EchoLinkConfigData echo,  Model model) 
+    {   	
+    	   	    	
+    	String  node = echo.node;
+    	String  pwd = echo.pwd; 
+    	String  name = echo.name;
+    	String  call= echo.call;
+    	String  astnode = echo.astnode;
+    	String  qth= echo.qth;
+    	String  email= echo.email;    	
+
+    	echo = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode);
+
+    	model.addAttribute("echo", echo);    	 	
+
+        return "user/echoresults";
+    }
+    
+    
     
     @GetMapping("/simpleusb")
     public String simpleusb() {

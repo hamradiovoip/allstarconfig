@@ -4,12 +4,12 @@ package org.allstar.config.data;
 public class EchoLinkConfigData {
 
 	
-	String call = "NVALID";			//	; Change this!
-	String pwd = "INVALID";			//	; Change this!
-	String name = "YOUR NAME";			//; Change this!
-	String qth = "INVALID";			//	; Change this!
-	String email = "INVALID";			//	; Change this!
-	String node = "000000" ;             //             ; Change this!
+	public String call = "NVALID";			//	; Change this!
+	public String pwd = "INVALID";			//	; Change this!
+	public String name = "YOUR NAME";			//; Change this!
+	public String qth = "INVALID";			//	; Change this!
+	public String email = "INVALID";			//	; Change this!
+	public String node = "000000" ;             //             ; Change this!
 	//; Data for EchoLink Status Page
 	String lat = "0.0";				//; Latitude in decimal degrees
 	String lon = "0.0";				//; Longitude in decimal degrees
@@ -19,16 +19,28 @@ public class EchoLinkConfigData {
 	String height = "0";				//; 0=10 1=20 2=40 3=80 4=160 5=320 6=640 7=1280 8=2560 9=5120 (AMSL in Feet)
 	String gain = "0";				//; Gain in db (0-9)
 	String dir = "0";				//	; 0=omni 1=45deg 2=90deg 3=135deg 4=180deg 5=225deg 6=270deg 7=315deg 8=360deg (Direction)
-	String astnode = "1999";		//	; Change this!
+	public String astnode = "1999";		//	; Change this!
 	
 	StringBuffer s;
 	public String resultsStr = "none";
+	
+	/*
+	 * Constructor
+	 * 
+	 */
+	public EchoLinkConfigData()
+	{
+
+	}
+
+
+	
 	
 	/* Constructor 
 	 * node = echolink node number
 	 * 
 	 */
-	EchoLinkConfigData(String call, String pwd, String name,String qth,
+	public EchoLinkConfigData(String call, String pwd, String name,String qth,
 			           String email, String node, String astnode)
 	{
 		
@@ -45,7 +57,7 @@ public class EchoLinkConfigData {
 	/*
 	 * call
 	 */
-	String getcall() 
+	public String getcall() 
 	{
 		return(this.call);
 
@@ -55,7 +67,7 @@ public class EchoLinkConfigData {
 	/*
 	 * call
 	 */
-	void setcall(String call)
+	public void setcall(String call)
 	{
 		this.call = call;
 
@@ -64,7 +76,7 @@ public class EchoLinkConfigData {
 	/*
 	 * pwd
 	 */
-	String getpwd() 
+	public String getpwd() 
 	{
 		return(this.pwd);
 
@@ -74,7 +86,7 @@ public class EchoLinkConfigData {
 	/*
 	 * pwd
 	 */
-	void setpwd(String pwd)
+	public void setpwd(String pwd)
 	{
 		this.pwd = pwd;
 
@@ -85,7 +97,7 @@ public class EchoLinkConfigData {
 	/*
 	 * name
 	 */
-	String getname() 
+	public String getname() 
 	{
 		return(this.name);
 
@@ -95,7 +107,7 @@ public class EchoLinkConfigData {
 	/*
 	 * name
 	 */
-	void setname(String name)
+	public void setname(String name)
 	{
 		this.name = name;
 
@@ -105,7 +117,7 @@ public class EchoLinkConfigData {
 	/*
 	 * qth
 	 */
-	String getqth() 
+	public String getqth() 
 	{
 		return(this.qth);
 
@@ -115,7 +127,7 @@ public class EchoLinkConfigData {
 	/*
 	 * qth
 	 */
-	void setqth(String qth)
+	public void setqth(String qth)
 	{
 		this.qth =  qth;
 
@@ -125,7 +137,7 @@ public class EchoLinkConfigData {
 	/*
 	 * email
 	 */
-	String getemail() 
+	public String getemail() 
 	{
 		return(this.email);
 
@@ -135,7 +147,7 @@ public class EchoLinkConfigData {
 	/*
 	 * email
 	 */
-	void setemail(String email)
+	public void setemail(String email)
 	{
 		this.email =  email;
 
@@ -146,7 +158,7 @@ public class EchoLinkConfigData {
 	/*
 	 * node
 	 */
-	String getnode() 
+	public String getnode() 
 	{
 		return(this.node);
 
@@ -156,7 +168,7 @@ public class EchoLinkConfigData {
 	/*
 	 * node
 	 */
-	void setnode(String node)
+	public void setnode(String node)
 	{
 		this.node =  node;
 
@@ -166,7 +178,7 @@ public class EchoLinkConfigData {
 	/*
 	 * astnode
 	 */
-	String getastnode() 
+	public String getastnode() 
 	{
 		return(this.astnode);
 
@@ -190,7 +202,7 @@ public class EchoLinkConfigData {
 	 * 	buildEcholink() - 	 	 
 	 */
 	
-	String buildEcholink()
+	public String buildEcholink()
 	{
 	
 		s.append(" [el0]\n" + 

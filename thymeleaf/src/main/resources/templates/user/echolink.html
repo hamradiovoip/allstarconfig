@@ -4,7 +4,7 @@
       layout:decorate="~{fragments/layout}">
 <head>
 <link rel="stylesheet" type="text/css" href="main.css">
-<title> Allstar Node 1999 Page</title>
+<title> Allstar Node Page</title>
 
 </head>
 <body>
@@ -18,15 +18,23 @@
 
 <table class="table1">
 <th> Maditory Settings</th>
-<tr><td> RX</td>   <td><input type="text" name="rx" value="-3"></td></tr>
-<tr><td>TX</td>  <td> <input type="text" name="tx" value="3"></td></tr>
-<tr><td> Callsign</td>  <td> <input type="text" name="" value=""></td></tr>
-<tr><td> Password</td>  <td> <input type="text" name="" value=""></td></tr>
-<tr><td> QTH</td>  <td> <input type="text" name="" value=""></td></tr>
-<tr><td> Email</td>  <td> <input type="text" name="" value=""></td></tr>
-<tr><td> Echo Link Node Number</td>  <td> <input type="text" name="" value=""></td></tr>
-<tr><td> Allstar Node Number</td>  <td> <input type="text" name="" value=""></td></tr>
+<!-- <tr><td> RX</td>   <td><input type="text" name="rx" value="-3"></td></tr>
+<tr><td>TX</td>  <td> <input type="text" name="tx" value="3"></td></tr> -->
+
+<form action="#" th:action="@{/echolink}" th:object="${echolink}" method="post">
+<tr><td> Callsign</td>  <td> <input type="text" name="" value=""th:field="*{call}" ></td></tr>
+<tr><td> Password</td>  <td> <input type="text" name="" value=""th:field="*{pwd}" ></td></tr>
+<tr><td> QTH</td>  <td> <input type="text" name="" value=""th:field="*{qth}" ></td></tr>
+<tr><td> Email</td>  <td> <input type="text" name="" value="" th:field="*{email}" ></td></tr>
+<tr><td> Echo Link Node Number</td>  <td> <input type="text" name="" value="" th:field="*{node}" ></td></tr>
+<tr><td> Allstar Node Number</td>  <td> <input type="text" name="" value="" th:field="*{astnode}" ></td></tr>
 </table>
+
+ <input class= "button1" type="submit" id="save" value="Generate echolink.conf file"><P>
+ </form>
+
+
+
 &nbsp;&nbsp; <P>
 <!-- 
 <table class="table1">
