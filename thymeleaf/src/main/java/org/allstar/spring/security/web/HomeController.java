@@ -288,12 +288,15 @@ public class HomeController {
     	String  node = echolink.node;
     	String  pwd = echolink.pwd; 
     	String  name = echolink.name;
-    	String  call= echolink.call;
-    	String  astnode = echolink.astnode;
+    	String  call= echolink.call;    	
     	String  qth= echolink.qth;
-    	String  email= echolink.email;    	
-
-    	echolink = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode);
+    	String  email= echolink.email;
+    	String  astnode = echolink.astnode;
+    	String  lat = echolink. lat;
+    	String  lon = echolink.lon;
+    			
+    	echolink = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode,
+    			        lat,  lon);
 
     	model.addAttribute("echolink", echolink);    	 	
 
