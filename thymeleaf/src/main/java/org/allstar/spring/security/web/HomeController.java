@@ -317,12 +317,17 @@ public class HomeController {
     @PostMapping("/simpleusb")
     public String simpleusbSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
     {   	
+    	
+    	String carrierfrom = simpleusb.carrierfrom;			
+		 String ctcssfrom = simpleusb.ctcssfrom;	
+		 String astnode = simpleusb.astnode;	
     	   	    	    			
-    	simpleusb = new SimpleUSBConfigData();
-
+    	simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
+    	
+	
     	model.addAttribute("simpleusb", simpleusb);    	 	
 
-        return "user/simpleusbsults";
+        return "user/simpleusbresults";
     }
     
         

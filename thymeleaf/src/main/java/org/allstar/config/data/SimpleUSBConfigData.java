@@ -5,7 +5,8 @@ public class SimpleUSBConfigData
 	public String carrierfrom = "";			
 	public String ctcssfrom = "";	
 	public String astnode = "";	
-
+	StringBuffer s;
+	public String resultsStr = "none";
 
 
 	/*
@@ -26,6 +27,8 @@ public class SimpleUSBConfigData
 		this.carrierfrom = carrierfrom;			
 		this.ctcssfrom = ctcssfrom;	
 		this.astnode = astnode;	
+		
+		buildRptString();
 	}
 
 
@@ -89,8 +92,6 @@ public class SimpleUSBConfigData
 	}
 
 
-	StringBuffer s;
-	public String resultsStr = "none";
 
 
 	/*
