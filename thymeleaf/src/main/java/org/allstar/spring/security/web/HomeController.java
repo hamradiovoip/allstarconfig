@@ -41,7 +41,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-
+import org.allstar.config.data.SimpleUSBConfigData;
 
 @Controller
 public class HomeController {
@@ -271,8 +271,7 @@ public class HomeController {
    
   
     @GetMapping("/echolink")
-    public  String echolink(Model model) {
-    	
+    public  String echolink(Model model) {    	
     	   	
     	EchoLinkConfigData echolink = new EchoLinkConfigData();    	
     	
@@ -302,13 +301,31 @@ public class HomeController {
 
         return "user/echoresults";
     }
-    
-    
+      
     
     @GetMapping("/simpleusb")
-    public String simpleusb() {
+    public String simpleusb(Model model) {    	
+    	
+    	SimpleUSBConfigData simpleusb = new SimpleUSBConfigData();    	
+    	
+    	model.addAttribute("simpleusb", simpleusb); 
+        	
         return "user/simpleusb";
+        
     }
+    
+    @PostMapping("/simpleusb")
+    public String simpleusbSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
+    {   	
+    	   	    	    			
+    	simpleusb = new SimpleUSBConfigData();
+
+    	model.addAttribute("simpleusb", simpleusb);    	 	
+
+        return "user/simpleusbsults";
+    }
+    
+        
     @GetMapping("/status")
     public String status() {
         return "user/status";
