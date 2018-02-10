@@ -15,23 +15,24 @@
         <li><a th:href="@{/status}">Status</a></li>
         
          <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Basic Configuration
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Generate Individual Config Files
         <span class="caret"></span></a>
         
-        <ul class="dropdown-menu">
-          <li><a th:href="@{/basic}">Basic Settings</a></li>                    
+        <ul class="dropdown-menu">                           
           <li><a th:href="@{/echolink}">Echolink</a></li>
+          <li><a th:href="@{/rpt}">RPT </a></li>
+           <li><a th:href="@{/simpleusb}">Simple USB </a></li>
+          <li><a th:href="@{/iax}">IAX</a></li>      
         </ul>
       </li>
         
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Advance Configuration
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Generate All Config Files
         <span class="caret"></span></a>
         
-        <ul class="dropdown-menu">          
-           <li><a th:href="@{/rpt}">RPT Settings</a></li>
-           <li><a th:href="@{/simpleusb}">Simple USB Settings</a></li>
-          <li><a th:href="@{/iax}">IAX</a></li>          
+        <ul class="dropdown-menu">           
+           <li><a th:href="@{/basic}">All Manditory Config Files</a></li>   
+               
         </ul>
       </li>
        <li><a th:href="@{/audio}">Audio Levels</a></li>
