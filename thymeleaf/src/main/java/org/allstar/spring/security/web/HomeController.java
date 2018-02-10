@@ -77,12 +77,35 @@ public class HomeController {
         return "error/access-denied";
     }
     
-    @GetMapping("/basic")
-    public String basic() {
+    @GetMapping("/baisc")
+    public String basic(Model model) {    	
     	
+    	SimpleUSBConfigData simpleusb = new SimpleUSBConfigData();    	
     	
-        return "user/basic";
+    	model.addAttribute("simpleusb", simpleusb); 
+        	
+        return "user/simpleusb";
+        
     }
+    
+    @PostMapping("/basic")
+    public String basicSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
+    {   	
+    	
+    	String carrierfrom = simpleusb.carrierfrom;			
+		 String ctcssfrom = simpleusb.ctcssfrom;	
+		 String astnode = simpleusb.astnode;	
+    	   	    	    			
+    	simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
+    	
+	
+    	model.addAttribute("simpleusb", simpleusb);    	 	
+
+        return "user/simpleusbresults";
+    }
+    
+    
+    
 
     
     /*
@@ -105,10 +128,23 @@ public class HomeController {
 */
 
     @GetMapping("/iax")
-    public String iax() {
+    public String iax()
+    {
+    	
+    	
+    	
         return "user/iax";
     }
-
+    
+    @PostMapping("/iax")
+    public String iaxSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model)
+    {
+    	
+    	
+    	
+		return null;    	
+    	
+    }
 
     @GetMapping("/log")
     public String log() {

@@ -10,108 +10,35 @@
 <body>
 <div layout:fragment="content" th:remove="tag">
 <P>
-<center><h2>IAX Settings</h2></center><p>
+<center><h2> Allstar IAX Settings</h2></center><p>
 
 
 
 
-<pre>
- Inter-Asterisk eXchange driver definition
-; http://docs.allstarlink.org/drupal/node/15 
-
-; ulaw, alaw, GSM and ADPCM should only be used, 
-; the rest of the standard Asterisk codecs
-; (speex, ilbc, lpc10, etc) should be avoided.
-
-; The ulaw and alaw codecs have the best audio quality,
-; followed by ADPCM, and lastly GSM,
-; Bandwidth used is in the reverse order to audio quality. 
-; GSM uses the least bandwidth, and alaw/ulaw the most. 
-
-; CODEC         AUDIO QUALITY           BANDWIDTH (including IP and Ethernet headers)
-; ULAW          best                    87 kbps
-; ADPCM         good                    55 kbps
-; GSM           mediocre                36 kbps
-jitterbuffer = yes                                                                
-forcejitterbuffer = yes                                                           
-dropcount = 2                                                                     
-maxjitterbuffer = 4000                                                            
-maxjitterinterps = 10                                                             
-resyncthreshold = 1000                                                            
-maxexcessbuffer = 80                                                              
-minexcessbuffer = 10                                                              
-jittershrinkrate = 1                                                              
-tos = 0x1E                                                                  
-autokill = yes                                                                    
-delayreject = yes             
+<strong>IAX Settings</strong><br>
 
 
-; Incoming radio connections
+<table class="table1">
+<th> Mandatory Settings</th>
+<!-- <tr><td> RX</td>   <td><input type="text" name="rx" value="-3"></td></tr>
+<tr><td>TX</td>  <td> <input type="text" name="tx" value="3"></td></tr> -->
 
-[radio]
-type = user
-disallow = all
-allow = ulaw
-allow = adpcm
-allow = gsm
-
-codecpriority = host
-context = radio-secure
-transfer = no
-
-[iaxrpt]                        	; Connect from iaxrpt Username field (PC AllStar Client)
-type = user                       	; Notice type is user here <---------------
-context = iaxrpt			; Context to jump to in extensions.conf
-auth = md5
-secret = Your_Secret_Pasword_Here
-host = dynamic
-disallow = all                    
-allow = ulaw
-allow = adpcm
-allow = gsm                       
-transfer = no
-
-[iaxclient]                     	; Connect from iax client (Zoiper...)
-type = friend                     	; Notice type here is friend <--------------
-context = iax-client              	; Context to jump to in extensions.conf
-auth = md5
-secret = Your_Secret_Password_Here
-host = dynamic
-disallow = all
-allow = ulaw
-allow = adpcm
-allow = gsm
-transfer = no
+<form action="#" th:action="@{/echolink}" th:object="${echolink}" method="post">
+<tr><td> Callsign</td> <td> <input type="text" name="" value=""th:field="*{call}" ></td></tr>
+<tr><td> Allstar Node Number</td> <td> <input type="text" name="" value="" th:field="*{astnode}" ></td></tr>
 
 
-[allstar-sys]
-type = user
-context = allstar-sys
-auth = rsa
-inkeys = allstar
-disallow = all
-allow = ulaw
+<tr><td> Email</td>  <td> <input type="text" name="" value="" th:field="*{email}" ></td></tr>
+<tr><td> Echo Link Node Number</td> <td> <input type="text" name="" value="" th:field="*{node}" ></td></tr>
 
+<tr><td> Lat</td>  <td> <input type="text" name="" value=""  th:field="*{lat}"></td></tr>
+<tr><td> Long</td>  <td> <input type="text" name="" value=""  th:field="*{lon}"></td></tr>
 
-[allstar-public]
-type = user
-context = allstar-public
-auth = md5
-secret = allstar
-disallow = all
-allow = ulaw
-allow = gsm
+</table>
+<p>
 
-
-
-</pre>
-
-
-<h1>...</h1>
-
-
-<input type="submit" value="Reset to Defaults">
-<input type="submit" value="Save"><P>
+ <input class= "button1" type="submit" id="save" value="Generate iax.conf file"><P>
+ </form>
 
 
  <p><a href="/" th:href="@{/}">Back to home page</a></p>
