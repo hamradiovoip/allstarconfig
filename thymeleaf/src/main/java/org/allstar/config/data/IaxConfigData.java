@@ -23,6 +23,8 @@ public class IaxConfigData {
 		this.call = call;
 		this.pwd = pwd;
 		
+		this.resultsStr= buildIAX();
+		
 	}
 
 
@@ -74,11 +76,18 @@ public class IaxConfigData {
 	{
 		return(this.pwd);
 	}
+
+
+	public void setresultsStr(String resultsStr)
+	{
+		this.resultsStr = resultsStr;
+	}
 	
-	
-	
-	
-	
+
+	public String getresultsStr()
+	{
+		return(resultsStr);
+	}
 	
 	
 	public String buildIAX()
@@ -133,7 +142,7 @@ public class IaxConfigData {
 	   		"; iaxthreadcount = 30                                                             \n" + 
 	   		"; iaxmaxthreadcount = 150   \n" + 
 	   		"\n");
-	   s.append(" ; register = 1999:123456@register.allstarlink.org	; This must be changed to your node number, password \n" + 
+	   s.append("register = "+this.node+":"+this.pwd+"@register.allstarlink.org	; This must be changed to your node number, password \n" + 
 	   		    "     	; remove the leading \";\"\n");
 	   s.append("                                          \n" + 
 	   		"\n" + 

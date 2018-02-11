@@ -34,6 +34,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.allstar.config.data.ConfigData;
 import org.allstar.config.data.EchoLinkConfigData;
+import org.allstar.config.data.IaxConfigData;
 import org.allstar.config.data.RptConfigData;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -128,26 +129,6 @@ public class HomeController {
     }
 
 */
-
-    @GetMapping("/iax")
-    public String iax()
-    {
-    	
-    	
-    	
-        return "user/iax";
-    }
-    
-    @PostMapping("/iax")
-    public String iaxSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model)
-    {
-    	
-    	
-    	
-		return null;    	
-    	
-    }
-
     @GetMapping("/log")
     public String log() {
         return "user/log";
@@ -277,12 +258,39 @@ public class HomeController {
     public String home() {
         return "user/home";
     }
+    
+
+    @GetMapping("/iax")
+    public String iax(Model model)
+    {    	
+    	IaxConfigData iax = new IaxConfigData();
+    	model.addAttribute("iax", iax);    	
+        return "user/iax";
+    }
+    
+    @PostMapping("/iax")
+    public String iaxSubmit(@ModelAttribute IaxConfigData iax,  Model model)
+    {
+
+    	String bindport =iax.getbindport();
+    	String node = iax.getnode(); 
+    	String call = iax.getcall();
+    	String pwd = iax.getpwd();
+    	iax = new  IaxConfigData(bindport,  node,  call,  pwd);
+    	
+    	model.addAttribute("iax", iax);  	 	
+    	
+    	
+    	return "user/iaxresults";    	
+
+    }
+
+    
     @GetMapping("/rpt")
-    public String rpt(Model model) {
-    	
+    public String rpt(Model model) 
+    {    	
     	   	
-    	RptConfigData rpt = new RptConfigData();
-    	
+    	RptConfigData rpt = new RptConfigData();   	
     	
     	model.addAttribute("rpt", rpt); 
         	
@@ -303,7 +311,7 @@ public class HomeController {
     	    	
     	model.addAttribute("rpt", rpt);    	 	
     
-        return "user/rptresults";
+        return "user/rptresults"; 
     }
     
    
