@@ -7,7 +7,10 @@ package org.allstar.config.data;
 public class ConfigData {
 	
 	//iax
+	public String bindport = "4569"; // default port
 	public String node;
+	public String pwd = "";     // Allstar system password
+	
 	public String carrierfrom;
 	public  String ctcssfrom; 
 	
@@ -45,6 +48,11 @@ public class ConfigData {
 	public String getctcssfrom() 
 	{
 		return(this.ctcssfrom);
+	}
+	
+	public void setnode(String node) 
+	{
+		this.node= node;
 	}
 	
 	
@@ -97,7 +105,7 @@ public class ConfigData {
 		
 		
 		// iax config
-		
+		iaxData = new IaxConfigData(this.bindport, this.node, this.call,  this.pwd); 
 		
 		//simple USB config
 		simple = new SimpleUSBConfigData(this.carrierfrom, this.ctcssfrom, this.node);

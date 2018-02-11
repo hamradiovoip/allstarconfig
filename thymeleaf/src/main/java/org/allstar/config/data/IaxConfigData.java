@@ -3,27 +3,82 @@ package org.allstar.config.data;
 public class IaxConfigData {
 
 	
-	int bindport = 4569;
-	String bindaddr ="192.168.0.1"; //not always used
-	String disallow ="all";
-	String allow = "";
-	Boolean jitterbuffer = true;                                                                
-	Boolean	forcejitterbuffer = true;                                                           
-	int	dropcount = 2;                                                                     
-	int maxjitterbuffer = 4000;                                                            
-	int	maxjitterinterps = 10;                                                             
-	int	resyncthreshold = 1000;                                                            
-	int maxexcessbuffer = 80;                                                              
-	int minexcessbuffer = 10;                                                              
-	int	jittershrinkrate = 1;    
-	int tos = 0x1E;                                                                  
-	Boolean autokill = true;  //yes                                                                  
-	Boolean delayreject = true;     //yes                                                            
-	//		; iaxthreadcount = 30                                                              
-	//		; iaxmaxthreadcount = 150  
+	public String bindport = "4569"; // default port
+	public String node = "1999";// allstar node number
+	public String call = "";    // your callsign
+	public String pwd = "";     // Allstar system password
 	
 	StringBuffer s;
 	public String resultsStr = "none";
+	
+	public IaxConfigData() {
+
+
+
+	}
+	public IaxConfigData(String bindport, String node, String call, String pwd) 
+	{
+		this.bindport= bindport;
+		this.node = node;
+		this.call = call;
+		this.pwd = pwd;
+		
+	}
+
+
+	public void setcall(String call)
+	{
+		this.call = call;
+	}
+	
+
+	public String getcall()
+	{
+		return(this.call);
+	}
+	
+	
+
+	public void setnode(String node) 
+	{
+		this.node= node;
+	}
+	
+	
+	public String getnode() 
+	{
+		return(this.node);
+	}
+	
+
+	public void setbindport(String bindport) 
+	{
+		this.bindport= bindport;
+	}
+	
+	
+	public String getbindport() 
+	{
+		return(this.bindport);
+	}
+	
+	
+
+	public void setpwd(String pwd)
+	{
+		this.pwd = pwd;
+	}
+	
+
+	public String getpwd()
+	{
+		return(this.pwd);
+	}
+	
+	
+	
+	
+	
 	
 	
 	public String buildIAX()
@@ -183,4 +238,26 @@ public class IaxConfigData {
 	   return(resultsStr);
 	   
 	}
+	
+	/* TODO add more vars
+	String bindaddr ="192.168.0.1"; //not always used
+	String disallow ="all";
+	String allow = "";
+	Boolean jitterbuffer = true;                                                                
+	Boolean	forcejitterbuffer = true;                                                           
+	int	dropcount = 2;                                                                     
+	int maxjitterbuffer = 4000;                                                            
+	int	maxjitterinterps = 10;                                                             
+	int	resyncthreshold = 1000;                                                            
+	int maxexcessbuffer = 80;                                                              
+	int minexcessbuffer = 10;                                                              
+	int	jittershrinkrate = 1;    
+	int tos = 0x1E;                                                                  
+	Boolean autokill = true;  //yes                                                                  
+	Boolean delayreject = true;     //yes                                                            
+	//		; iaxthreadcount = 30                                                              
+	//		; iaxmaxthreadcount = 150
+	 * 
+	 *   
+	 */
 }

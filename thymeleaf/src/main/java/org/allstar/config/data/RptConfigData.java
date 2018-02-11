@@ -15,7 +15,7 @@ public class RptConfigData {
 	/*
 	 * Constructor
 	 */
-	public RptConfigData(String rxchannel, String nodeNumber,String  call, String duplex)
+	public RptConfigData(String rxchannel, String nodeNumber, String  call, String duplex)
 	{
 		
 	    this.nodeNumber= nodeNumber;
