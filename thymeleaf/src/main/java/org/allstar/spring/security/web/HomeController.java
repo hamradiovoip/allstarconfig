@@ -32,6 +32,7 @@ import org.json.JSONException;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.allstar.config.data.ConfigData;
 import org.allstar.config.data.EchoLinkConfigData;
 import org.allstar.config.data.RptConfigData;
 import org.apache.http.HttpHost;
@@ -77,25 +78,26 @@ public class HomeController {
         return "error/access-denied";
     }
     
-    @GetMapping("/baisc")
+    @GetMapping("/basic")
     public String basic(Model model) {    	
     	
-    	SimpleUSBConfigData simpleusb = new SimpleUSBConfigData();    	
+    	ConfigData basic= new ConfigData();
+    	//SimpleUSBConfigData simpleusb = new SimpleUSBConfigData();    	
     	
-    	model.addAttribute("simpleusb", simpleusb); 
+    	model.addAttribute("basic", basic); 
         	
-        return "user/simpleusb";
+        return "user/basic";
         
     }
     
     @PostMapping("/basic")
     public String basicSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
     {   	
-    	
+    	 
     	String carrierfrom = simpleusb.carrierfrom;			
-		 String ctcssfrom = simpleusb.ctcssfrom;	
-		 String astnode = simpleusb.astnode;	
-    	   	    	    			
+    	String ctcssfrom = simpleusb.ctcssfrom;	
+    	String astnode = simpleusb.astnode;	
+
     	simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
     	
 	

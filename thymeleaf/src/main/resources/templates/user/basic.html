@@ -11,18 +11,20 @@
 <div layout:fragment="content" th:remove="tag">
 <P>
 <center><h2>Generate All Necessary Config Files</h2></center><p>
-&nbsp;&nbsp; <P>
+
+<form action="#" th:action="@{/basic}" th:object="${basic}" method="post">
+<fieldset>
+<legend> Basic Settings</legend>
 
 <table class="table1">
 
-<tr><td>Node Number</td><td> <input type="text" name="call" value=""></td> </tr><br>
-<tr><td>Call Sign </td><td> <input type="text" name="call" value=""></td> </tr><br>
-<tr><td>Allstar System Password</td><td> <input type="text" name="call" value=""></tr><br>
-</table>
+<tr><td><strong>Node Number</strong></td><td> <input type="text" name="node" th:field="*{node}" value=""></td> </tr><br>
+<tr><td><strong>Call Sign</strong> </td><td> <input type="text" name="call" value=""></td> </tr><br>
+<tr><td><strong>Allstar System Password</strong></td><td> <input type="text" name="call" value=""></tr><br>
 
-&nbsp;&nbsp; <P>
-<strong>Channel Driver </strong><br>
- <select>
+
+<tr><td><strong>Channel Driver </strong><br></td>
+ <td><select>
 <option value="dahdipseudo" >dahdi/pseudo No radio (hub)</option>
 <option value="simple">SimpleUSB</option>
 <option value="pi">Raspberry Pi PiTA </option>
@@ -31,24 +33,16 @@
 <option value="bb">BeagleBoard </option>
 <option value="isrp">USRP GNU Radio interface USRP </option> 
 </select> 
-<P>
-&nbsp;&nbsp; <P>
-
-<strong>Repeater/Simplex node settings</strong>
-
-<p>
+</td></tr>
+<tr><td>
+<strong>Repeater/Simplex node settings</strong> </td>
+<td>
  <select>
   <option value="simplex">Simplex</option>
   <option value="repeater">Repeater</option>
   <option value="full">Full Duplex</option>  
 </select> 
-<P>
-&nbsp;&nbsp; <P>
-
- <table class="table1">
-
-<tr><td>Node Number</td><td> <input type="text" name="node" th:field="*{astnode}" value=""></td> </tr><br>
-
+</td></tr>
 <tr><td><strong>carrierfrom </strong></td><td> <br>
  <select id="carrierfrom" th:field="*{carrierfrom}" > 
    <option value="no" >no</option>
@@ -63,9 +57,18 @@
    <option value="usb" >usb</option>
    <option value="usbinvert" >usbinvert</option>  
  </select> </td></tr>
-</table> 
+ 
+ </table>
+</fieldset>
 
-<!-- 
+&nbsp;&nbsp; <P>
+
+
+<input class= "button1" type="submit" id="save" value="Generate Config Files"><P>
+</form>
+
+&nbsp;&nbsp; <P>
+<!--  TODO
 <strong>Telemetry </strong>
 
 <form>
@@ -139,14 +142,6 @@
 </tr>
 </table> <p>
 -->
-&nbsp;&nbsp; <P>
-
-
-<input class= "button1" type="submit" value="Reset to Defaults">
-<input class= "button1" type="submit" id="save" value="Save"><P>
-&nbsp;&nbsp; <P>
-
-
 
 </div>
 </body>
