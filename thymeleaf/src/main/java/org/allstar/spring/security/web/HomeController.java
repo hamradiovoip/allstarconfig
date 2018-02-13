@@ -95,9 +95,9 @@ public class HomeController {
     public String basicSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
     {   	
     	 
-    	String carrierfrom = simpleusb.carrierfrom;			
-    	String ctcssfrom = simpleusb.ctcssfrom;	
-    	String astnode = simpleusb.astnode;	
+    	String carrierfrom = simpleusb.getcarrierfrom();			
+    	String ctcssfrom = simpleusb.getctcssfrom();	
+    	String astnode = simpleusb.getastnode();	
 
     	simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
     	

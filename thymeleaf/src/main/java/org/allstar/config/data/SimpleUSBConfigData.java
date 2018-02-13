@@ -2,9 +2,9 @@ package org.allstar.config.data;
 
 public class SimpleUSBConfigData 
 {
-	public String carrierfrom = "";			
-	public String ctcssfrom = "";	
-	public String astnode = "";	
+	String carrierfrom = "";			
+	String ctcssfrom = "";	
+	String astnode = "";	
 	StringBuffer s;
 	public String resultsStr = "none";
 
