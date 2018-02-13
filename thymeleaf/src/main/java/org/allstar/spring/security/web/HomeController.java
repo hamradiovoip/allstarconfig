@@ -107,28 +107,7 @@ public class HomeController {
         return "user/simpleusbresults";
     }
     
-    
-    
 
-    
-    /*
-    @RequestMapping(value = "/basic",  method = RequestMethod.POST)
-    public String basic(@Valid @ModelAttribute("save") RptConfigData data, 
-    	      BindingResult result, ModelMap model) {
-    	if (result.hasErrors()) {
-            return "error";
-    	}
-    	
-    	// model.addAttribute("name", data.getName());
-        
-    //	 save data user typed in and create a file to save to disk 
-    	
-    	
-    	
-        return "user/basic";
-    }
-
-*/
     @GetMapping("/log")
     public String log() {
         return "user/log";
@@ -278,8 +257,7 @@ public class HomeController {
     	String pwd = iax.getpwd();
     	iax = new  IaxConfigData(bindport,  node,  call,  pwd);
     	
-    	model.addAttribute("iax", iax);  	 	
-    	
+    	model.addAttribute("iax", iax);  	
     	
     	return "user/iaxresults";    	
 
@@ -364,9 +342,9 @@ public class HomeController {
     public String simpleusbSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
     {   	
     	
-    	String carrierfrom = simpleusb.carrierfrom;			
-		 String ctcssfrom = simpleusb.ctcssfrom;	
-		 String astnode = simpleusb.astnode;	
+    	String carrierfrom = simpleusb.getcarrierfrom();			
+		String ctcssfrom = simpleusb.getctcssfrom();	
+		String astnode = simpleusb.getastnode();	
     	   	    	    			
     	simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
     	

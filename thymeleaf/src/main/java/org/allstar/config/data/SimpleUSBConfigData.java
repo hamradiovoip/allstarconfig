@@ -45,7 +45,7 @@ public class SimpleUSBConfigData
 	/*
 	 * 
 	 */
-	public void set(String carrierfrom)
+	public void setcarrierfrom(String carrierfrom)
 	{
 		this.carrierfrom = carrierfrom;
 
