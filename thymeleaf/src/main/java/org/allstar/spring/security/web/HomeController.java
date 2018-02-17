@@ -1,23 +1,30 @@
 package org.allstar.spring.security.web;
 
 import java.io.BufferedReader;
+import java.io.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StreamUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +32,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.json.simple.JSONObject;
@@ -93,20 +102,69 @@ public class HomeController {
         
     }
     
+    
+    @RequestMapping(value = "/export", method = RequestMethod.GET)
+    public void getFile(OutputStream out)
+    {
+        FileSystemResource resource = new FileSystemResource("c:\file.csv"); 
+        try (ZipOutputStream zippedOut = new ZipOutputStream(out))
+        {
+            ZipEntry e = new ZipEntry(resource.getFilename());
+            
+            // Configure the zip entry, the properties of the file
+            e.setSize(resource.contentLength());
+            e.setTime(System.currentTimeMillis());
+            // etc.
+            zippedOut.putNextEntry(e);
+            // And the content of the resource:
+            StreamUtils.copy(resource.getInputStream(), zippedOut);
+            zippedOut.closeEntry();
+            zippedOut.finish();
+        } catch (Exception e) {
+            // Do something with Exception
+        }        
+    }
+    
+    
     @PostMapping("/basic")
-    public String basicSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
+    public ZipOutputStream basicSubmit( HttpServletResponse response,
+    		@ModelAttribute @Valid final SimpleUSBConfigData simpleusb,
+    		Model model,
+            BindingResult bindingResult,
+            HttpSession session) 
     {   	
-    	 
-    	String carrierfrom = simpleusb.getcarrierfrom();			
-    	String ctcssfrom = simpleusb.getctcssfrom();	
-    	String astnode = simpleusb.getastnode();	
-
-    	simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
+ 	 
+    	//  produces="application/zip" 
     	
+    	simpleusb.buildRptString();
+    	
+    	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    	
+    	//ZipOutputStream zos = null;
+    	try(ZipOutputStream zos = new ZipOutputStream(baos))
+    	{
+
+    	  /* File is not on the disk, test.txt indicates
+    	     only the file name to be put into the zip */
+    	  ZipEntry entry = new ZipEntry("test.txt"); 
+
+    	  zos.putNextEntry(entry);
+    	  zos.write(simpleusb.resultsStr.getBytes());
+    	  zos.closeEntry();
+    	  return zos;
+
+    	  /* use more Entries to add more files
+    	     and use closeEntry() to close each file entry */
+
+    	} catch(IOException ioe)
+    	{
+    		ioe.printStackTrace();
+    	}
+
 	
     	model.addAttribute("simpleusb", simpleusb);    	 	
 
-        return "user/simpleusbresults";
+        return null;
     }
     
 
@@ -250,18 +308,20 @@ public class HomeController {
     }
     
     @PostMapping("/iax")
-    public String iaxSubmit(@ModelAttribute IaxConfigData iax,  Model model)
+    public ModelAndView iaxSubmit(@ModelAttribute @Valid final IaxConfigData iax,  Model model,
+    		 BindingResult bindingResult)
     {
 
     	String bindport =iax.getbindport();
     	String node = iax.getnode(); 
     	String call = iax.getcall();
-    	String pwd = iax.getpwd();
-    	iax = new  IaxConfigData(bindport,  node,  call,  pwd);
+    	String pwd = iax.getpwd();    	
+    	
+    	iax.buildIAX();
     	
     	model.addAttribute("iax", iax);  	
     	
-    	return "user/iaxresults";    	
+    	return new ModelAndView( "user/iaxresults");    	
 
     }
 
@@ -278,15 +338,17 @@ public class HomeController {
     }
     
     @PostMapping("/rpt")
-    public String rptSubmit(@ModelAttribute RptConfigData rpt,  Model model) 
+    public String rptSubmit(@ModelAttribute @Valid final RptConfigData rpt,  Model model,
+    		BindingResult bindingResult) 
     { 	 	   	    	
     	String node = rpt.nodeNumber;
     	String ch = rpt.rxChannel; 
     	String call= rpt.call;
     	String duplex= rpt.duplex;
     	
-    	rpt = new RptConfigData(ch, node, call, duplex);
-    	    	
+    	//rpt = new RptConfigData(ch, node, call, duplex);
+    	
+    	rpt.buildRptString();   	
     	model.addAttribute("rpt", rpt);    	 	
     
         return "user/rptresults"; 
@@ -305,7 +367,8 @@ public class HomeController {
     }
     
     @PostMapping("/echolink")
-    public String echolSubmit(@ModelAttribute EchoLinkConfigData echolink,  Model model) 
+    public String echolSubmit(@ModelAttribute @Valid final EchoLinkConfigData echolink,  Model model,
+    		BindingResult bindingResult) 
     {   	
     	   	    	
     	String  node = echolink.node;
@@ -318,8 +381,7 @@ public class HomeController {
     	String  lat = echolink. lat;
     	String  lon = echolink.lon;
     			
-    	echolink = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode,
-    			        lat,  lon);
+    	echolink.buildEcholink();
 
     	model.addAttribute("echolink", echolink);    	 	
 
@@ -339,14 +401,15 @@ public class HomeController {
     }
     
     @PostMapping("/simpleusb")
-    public String simpleusbSubmit(@ModelAttribute SimpleUSBConfigData simpleusb,  Model model) 
+    public String simpleusbSubmit(@ModelAttribute @Valid final SimpleUSBConfigData simpleusb,  Model model,
+    		BindingResult bindingResult) 
     {   	
     	
     	String carrierfrom = simpleusb.getcarrierfrom();			
 		String ctcssfrom = simpleusb.getctcssfrom();	
 		String astnode = simpleusb.getastnode();	
     	   	    	    			
-    	simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
+    	//simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
     	
 	
     	model.addAttribute("simpleusb", simpleusb);    	 	
@@ -414,6 +477,9 @@ public void zipFiles(HttpServletResponse response) throws IOException {
     }    
 
     zipOutputStream.close();
+    
+    
+    
 }
 
 

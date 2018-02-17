@@ -12,34 +12,22 @@
 <P>
 <center><h2> Allstar IAX Settings</h2></center><p>
 
-
-
-
 <strong>IAX Settings</strong><br>
-
 
 <table class="table1">
 <th> Mandatory Settings</th>
-<!-- <tr><td> RX</td>   <td><input type="text" name="rx" value="-3"></td></tr>
-<tr><td>TX</td>  <td> <input type="text" name="tx" value="3"></td></tr> -->
 
-<form action="#" th:action="@{/echolink}" th:object="${echolink}" method="post">
+<form action="#" th:action="@{/iax}" th:object="${iax}" method="post">
 <tr><td> Callsign</td> <td> <input type="text" name="" value=""th:field="*{call}" ></td></tr>
-<tr><td> Allstar Node Number</td> <td> <input type="text" name="" value="" th:field="*{astnode}" ></td></tr>
-
-
-<tr><td> Email</td>  <td> <input type="text" name="" value="" th:field="*{email}" ></td></tr>
-<tr><td> Echo Link Node Number</td> <td> <input type="text" name="" value="" th:field="*{node}" ></td></tr>
-
-<tr><td> Lat</td>  <td> <input type="text" name="" value=""  th:field="*{lat}"></td></tr>
-<tr><td> Long</td>  <td> <input type="text" name="" value=""  th:field="*{lon}"></td></tr>
+<tr><td> Allstar Node Number</td> <td> <input type="text" name="" value="" th:field="*{node}" ></td></tr>
+<tr><td> bind port</td> <td> <input type="text" name="" value=""th:field="*{bindport}" ></td></tr>
+<tr><td> Allstar Password</td> <td> <input type="text" name="" value="" th:field="*{pwd}" ></td></tr>
 
 </table>
 <p>
 
  <input class= "button1" type="submit" id="save" value="Generate iax.conf file"><P>
  </form>
-
 
  <p><a href="/" th:href="@{/}">Back to home page</a></p>
 
