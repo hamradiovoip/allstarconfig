@@ -14,24 +14,35 @@
       
         <li><a th:href="@{/status}">Status</a></li>
         
-         <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Config File <BR> Generator
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Node Settings
         <span class="caret"></span></a>
         
         <ul class="dropdown-menu">        
-          <li><a th:href="@{/basic}">All Basic Config Files in Zip</a></li> 
+          <li><a th:href="@{/basic}">All Config Files in Zip</a></li> 
           <li><a th:href="@{/echolink}">Echolink</a></li>
           <li><a th:href="@{/rpt}">RPT </a></li>
            <li><a th:href="@{/simpleusb}">Simple USB </a></li>
           <li><a th:href="@{/iax}">IAX</a></li>      
+          <li><a th:href="@{/audio}">Audio Levels</a></li>
         </ul>
       </li>        
 
-      <li><a th:href="@{/audio}">Audio Levels</a></li>
+     
       <li><a th:href="@{/controller}">Node Control</a></li>
       <li><a th:href="@{/live}">Live Audio</a></li>
-      <li><a th:href="@{/webtrans}">Webtranseiver</a></li>
+      <li><a th:href="@{/webtrans}">Webtranseiver</a></li>        
         
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Help
+        <span class="caret"></span></a>    
+        
+       <ul class="dropdown-menu">     
+       <li> <a th:href="@{/installhelp}">Install Help</a> </li>   
+          <li> <a th:href="@{/dialfaq}">DIAL FAQ</a> </li>   
+      </ul>   
+       </li>
+      
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
         <span class="caret"></span></a>
@@ -43,10 +54,22 @@
           <li><a th:href="@{/}">Profile</a></li>
         </ul>
       </li>
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Links
+        <span class="caret"></span></a>    
+        
+       <ul class="dropdown-menu">
+       <li><a href="https://allstarlink.org/">Main Allstar Site</a></li>     
+        <li> <a href="https://github.com/AllStarLink/DIAL"> Dial Git Hub</a> </li>   
+        <li> <a href="https://allstarlink.org/nodelist.php"> List of all nodes</a> </li> 
+        <li> <a href="http://stats.allstarlink.org/maps/"> Allstar Maps  </a></li>       
+      </ul>   
+      </li>
+      
+      
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a th:href="@{/help}"><span class="glyphicon glyphicon-user"></span> Help</a></li>
-      <li><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    
     </ul>
   </div>
 </nav> 

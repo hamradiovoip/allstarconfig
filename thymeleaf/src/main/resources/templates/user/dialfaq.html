@@ -1,0 +1,98 @@
+ 
+ 
+ 
+ <!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+
+<link rel="stylesheet" type="text/css" href="main.css">
+<title> Install Help</title>
+
+</head>
+
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+<P>
+<center><h2>DIAL FAQ</h2></center><p>
+ 
+  
+
+Q: What does DIAL stand for?<br />
+A: Debian Installation for AllStar Link.</p>
+<p>Q: How do I login to DIAL?<br />
+A: You can login as user debian with a password of debian (normal user) or loging as root with a password of debian (super user).</p>
+<p>Q: When using ACID I had (insert feature here) Now it's gone. When will DIAL support this feature?<br />
+A: DIAL supports all the same channel drivers, features and apps that ACID supported. Under DIAL, modules are not loaded by default. They must be enabled in /etc/asterisk/modules.conf.</p>
+<p>Q: Will my existing ACID configuration files work with DIAL?<br />
+A: Yes they will. You can also use the portal configuration to create a configuration. The script /usr/local/sbin/restorenode will allow you to download and install configurations backed up to allstarlink.org</p>
+<p>Q: Will DIAL run as a hub / reflector?<br />
+A: YES, DIAL will run as a hub. To build a hub set rxchannel = dahdi/pseudo in rpt.conf and set noload =&gt; chan_simpleusb.so in modules.conf</p>
+<p>Q: Do I need a monitor and keyboard to run DIAL?<br />
+A: No, DIAL can be managed via SSH on port 222. This can be changed in /etc/ssh/sshd.conf.  X86 DIAL does require a monitor and keyboard to install. After that same as the ARM version.</p>
+<p>Q: What is the IP address of the new node?<br />
+A: DIAL configures the machine via DHCP. Check your DHCP server for the address. The machine defaults to repeater.allstarlink.org. This can be changed with /usr/local/sbin/netsetup</p>
+<p>Q: Does my remote access program (insert IAXRPT, Web Transceiver, Zoiper, AndroidIAX here) work with DIAL?<br />
+A: Yes, either using the sample configuration files or your custom files.</p>
+<p>Q: What about SIP support?<br />
+A: By default, SIP is not enabled. If you want to enable it, see /etc/asterisk/modules.conf</p>
+<p>Q: What audio file format does DIAL use?<br />
+A: By default, DIAL installs the ulaw formatted audio files installed in /var/lib/asterisk/sounds/.</p>
+<p>Q: What version of app_rpt is DIAL built with?<br />
+A: DIAL is built from the current version of asterisk taken from the SVN. As of now, The version of the code from the SVN is 1520 and app_rpt is version 0.325 10/19/2014</p>
+<p>Q: DIAL is built on Debian 8, why Debian, why not (insert distro here)?<br />
+A: There are a lot of great Linux distributions available. Debian is a 20+ year old distribution with a large developer base. Many of the other distributions are based on Debian.</p>
+<p>Q: I run a custom script (insert script here). Does it work with DIAL?<br />
+A: Unless the script does something really strange or uses something specific to only one Linux distribution, The script should be made to work. I'll be happy to work with script writers to move their script to DIAL.</p>
+<p>Q: I updated my kernel now what?<br />
+A: You must have the kernel headers for the version of the kernel you installed. Install the headers, recompile and install DAHDI.</p>
+<p>Q: I need a Linux program that is not in DIAL, what do I do?<br />
+A: apt-get is the Debian utility to install, remove and upgrade programs. apt-get install foo will install the program foo if it is available.</p>
+<p>Q: I would like to create my own custom version of DIAL. Can you help me?<br />
+A: There are a number of new versions in the works. The scripts, patches and configuration files used to build DIAL are at <a href="https://github.com/N4IRS/AllStar">https://github.com/N4IRS/AllStar</a></p>
+<p>Q: I have a question not covered in this FAQ, how do I get an answer?<br />
+A: There is a wealth of information on AllStar Asterisk at <a href="http://docs.allstarlink.org/drupal/">http://docs.allstarlink.org/drupal/</a> There is also a user mail list at <a href="http://ohnosec.org/cgi-bin/mailman/listinfo/app_rpt-users">http://ohnosec.org/cgi-bin/mailman/listinfo/app_rpt-users</a></p>
+<p>Q: How do I change my network (adapter) setup?<br />
+A:  /usr/local/sbin/netsetup</p>
+<p>Q: How do I change my DNS setup?<br />
+A:  /etc/resolv.conf</p>
+<p>Q:  How do I restart Asterisk?<br />
+A:  You will need to stop it and start it.<br />
+     service asterisk stop<br />
+     service asterisk start</p>
+<p>     If it does not stop:<br />
+     killall -9 asterisk</p>
+<p>     To see if it's running:<br />
+     ps ax | grep asterisk </p>
+<p>Q: What are the specific differences between a single node, and a hub, to which can accept many connections?<br />
+A: Any node can be a "HUB". A node is not limited to one connection. There may be hardware limitations about the number of connections a given piece of hardware and internet connection can support.  Typically, a HUB is located on a higher bandwidth Internet connection and is running a more "stout" piece of hardware.  A HUB usually does not have a node radio connected to it, but there is no reason it can't.  A HUB usually runs DAHDI/pseudo for it's rxchannel.  This is changed in the rpt.conf file.</p>
+<p>Q:   On some x86 and some raspberry pi2's, I have noticed dtmf falsing and would like to recompile app_rpt to set the radio relax feature off to reduce/eliminate the false dtmf tones that get decoded from voice transmissions.<br />
+A:   Here's how to recompile with RADIO_RELAX off in DIAL.<br />
+Stop asterisk:<br />
+service asterisk stop</p>
+<p>Verify asterisk is stopped:<br />
+ps ax | grep asterisk If you see  /usr/sbin/asterisk it is not stopped<br />
+ killall -9 asterisk<br />
+ps ax | grep asterisk If you see  /usr/sbin/asterisk it is not stopped</p>
+<p>Change compiler setting:<br />
+cd /usr/src/astsrc-1.4.23-pre/asterisk<br />
+make menuselect<br />
+select  10.  Compiler Flags<br />
+select 6.  RADIO_RELAX set to off<br />
+x<br />
+make<br />
+make install</p>
+<p>service asterisk start</p>
+<p>Q:  I exited the firsttime script for setting up a DIAL system, and would now like to run it.  How is this accomplished?<br />
+A:  Do the following:<br />
+touch /etc/asterisk/firsttime<br />
+/usr/local/sbin/firsttime</p>
+
+ 
+
+</body>
+
+</html>
+

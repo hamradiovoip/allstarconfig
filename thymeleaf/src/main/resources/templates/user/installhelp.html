@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+
+<link rel="stylesheet" type="text/css" href="main.css">
+<title> Install Help</title>
+
+</head>
+
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+<P>
+<center><h2>Install Help</h2></center><p>
+ Overview
+
+These are the steps to build your first node. The idea here is to give you the overall installation picture. Be sure to browse the next few pages of this howto for more detail. Also read through all the links on the Allstar (https://allstarlink.org/) site BEFORE you login. Because after login the menu changes and much (if not all) of the basic information goes away.
+
+<ol><li>Buy a URI (recommended) or a cheap USB sound FOB.</li>
+<li>Go on the Allstar web site. Request an ID, get it approved.</li>
+<li>While you're waiting for your ID to get approved, open port 4569 on your router and point it to the IP that will be your node. Also download the ACID iso and burn a CD. </li>
+<li>Once approved make your ID a sysOp, add a server, request one or more nodes.</li>
+<li>Configure the server and assigned node(s).</li>
+<li>Boot the CD and carefully follow the prompts. During the install you'll download the web configuration to your node.</li>
+</ol>
+
+<p>
+Expect to repeat steps 5 and 6 many times. It takes a while to sort it all out, stick to it. Make note of the password prompt for the root user. Many first time Linux installers don't realize this prompt is asking for you to chose the password for the administrator, known as user ID "root" in the Linux world. Make the password something secure and memorable. If you forget it you'll need to do the full install all over. When the install is complete you'll be prompted for the user ID and password which will be root and the password you choose. You don't have to login, specially if you don't know Linux, as you will have a working node at this point.
+<p>
+
+<p>After you get the hang of the web install you can venture into the world of Linux and editing the conf files for advanced features. If you do edit your config files and later decide to download the web config it will overwrite all of your edits. </p>
+
+<p>
+AllStar
+<p>
+Patches and files to compile AllStar Asterisk on a Debian ARM amd64 and i386 Platforms This has been cloned from the N4IRS/AllStar repository. From this point on all development will be done in the official ASL repository.
+<p>
+Install on a existing Debian Jessie
+<p>
+cd /tmp
+<p>
+wget https://github.com/AllStarLink/DIAL/raw/master/allstar-asterisk-install.sh
+<p>
+chmod +x allstar-asterisk-install.sh
+<p>
+./allstar-asterisk-install.sh
+<p>
+
+<a href="https://github.com/AllStarLink/DIAL"> Dial Git Hub</a>
+<p>
+
+<a href="https://allstarlink.org/nodelist.php"> List of all nodes</a>
+
+<p>
+<pre>
+
+
+
+</pre>
+
+</body>
+
+</html>

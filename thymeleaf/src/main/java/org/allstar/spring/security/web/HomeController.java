@@ -153,7 +153,11 @@ public class HomeController {
     	  zos.write(resultsExtStr.getBytes());
     	  zos.closeEntry();    	  
     	  
-    	  
+    	  String saveNode = basicdata.saveNodeData();
+    	  ZipEntry entrySave = new ZipEntry("savenode.conf");
+    	  zos.putNextEntry(entrySave);
+    	  zos.write(saveNode.getBytes());
+    	  zos.closeEntry();    	  
     	  
     	  zos.close();    
     	  baos.close();
@@ -189,6 +193,20 @@ public class HomeController {
     public String help() {
         return "user/help";
     }
+    
+
+    @GetMapping("/dialfaq")
+    public String dialfaq() {
+        return "user/dialfaq";
+    }
+    
+
+    @GetMapping("/installhelp")
+    public String installhelp() {
+        return "user/installhelp";
+    }
+    
+    
     @GetMapping("/live")
     public String live() {
         return "user/live";
