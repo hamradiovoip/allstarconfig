@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>basic results</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <center><h2>Allstar Link Basic Config</h2></center>
+    &nbsp;&nbsp; <P>
+
+<pre>
+<p th:text="${basicdata.resultsIaxStr}" />
+<a href="/basic">Submit another config file</a>
+</pre>
+
+</div>
+</body>
+</html>
+    
+    

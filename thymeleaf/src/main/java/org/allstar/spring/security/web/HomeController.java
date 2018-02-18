@@ -93,65 +93,70 @@ public class HomeController {
     @GetMapping("/basic")
     public String basic(Model model) {    	
     	
-    	ConfigData basic= new ConfigData();
-    	//SimpleUSBConfigData simpleusb = new SimpleUSBConfigData();    	
+    	ConfigData basicdata= new ConfigData();
     	
-    	model.addAttribute("basic", basic); 
+    	
+    	model.addAttribute("basicdata", basicdata); 
         	
         return "user/basic";
         
     }
     
-    
-    @RequestMapping(value = "/export", method = RequestMethod.GET)
-    public void getFile(OutputStream out)
-    {
-        FileSystemResource resource = new FileSystemResource("c:\file.csv"); 
-        try (ZipOutputStream zippedOut = new ZipOutputStream(out))
-        {
-            ZipEntry e = new ZipEntry(resource.getFilename());
-            
-            // Configure the zip entry, the properties of the file
-            e.setSize(resource.contentLength());
-            e.setTime(System.currentTimeMillis());
-            // etc.
-            zippedOut.putNextEntry(e);
-            // And the content of the resource:
-            StreamUtils.copy(resource.getInputStream(), zippedOut);
-            zippedOut.closeEntry();
-            zippedOut.finish();
-        } catch (Exception e) {
-            // Do something with Exception
-        }        
-    }
-    
-    
-    @PostMapping("/basic")
-    public ZipOutputStream basicSubmit( HttpServletResponse response,
-    		@ModelAttribute @Valid final SimpleUSBConfigData simpleusb,
+   
+    @PostMapping("/basic")    
+    public void basicSubmit(HttpServletResponse response,
+    		@ModelAttribute @Valid final ConfigData basicdata,
     		Model model,
             BindingResult bindingResult,
             HttpSession session) 
     {   	
- 	 
-    	//  produces="application/zip" 
+     	
+      	response.setContentType("application/zip");
+      	response.setStatus(HttpServletResponse.SC_OK);
+      	response.addHeader("Content-Disposition", "attachment; filename=\"configs.zip\"");
     	
-    	simpleusb.buildRptString();
-    	
+    	//File f = new File("configs.zip");
+
+    	basicdata.buildConfigfiles();
+
+    	String resultsSimpleUsbStr = basicdata.getSimpleUsbStr();
+    	String resultsRptStr = basicdata.getRptStr();
+    	String resultsIaxStr = basicdata. getIaxStr();    
     	ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    	
-    	//ZipOutputStream zos = null;
-    	try(ZipOutputStream zos = new ZipOutputStream(baos))
+    	ZipOutputStream zos = null;
+
+    	try
     	{
-
-    	  /* File is not on the disk, test.txt indicates
-    	     only the file name to be put into the zip */
-    	  ZipEntry entry = new ZipEntry("test.txt"); 
-
-    	  zos.putNextEntry(entry);
-    	  zos.write(simpleusb.resultsStr.getBytes());
+          zos = new ZipOutputStream(baos);
+    	  /* File is not on the disk, test.txt indicates only the file name to be put into the zip */
+          
+    	  ZipEntry entrySimpleUsb = new ZipEntry("simpleusb.conf");
+    	  
+    	  zos.putNextEntry(entrySimpleUsb);
+    	  zos.write(resultsSimpleUsbStr.getBytes());
     	  zos.closeEntry();
-    	  return zos;
+    	  
+    	  ZipEntry entryRpt = new ZipEntry("rpt.conf");
+    	  zos.putNextEntry(entryRpt);
+    	  zos.write(resultsRptStr.getBytes());
+    	  zos.closeEntry();
+    	  
+    	  ZipEntry entryIax = new ZipEntry("iax.conf");
+    	  zos.putNextEntry(entryIax);
+    	  zos.write(resultsIaxStr.getBytes());
+    	  zos.closeEntry();    	  
+    	  
+    	  zos.close();    
+    	  baos.close();
+    	  
+ 
+
+         
+          response.getOutputStream().write(baos.toByteArray());
+          response.getOutputStream().close();
+          response.getOutputStream().flush();
+    	  
+    	  
 
     	  /* use more Entries to add more files
     	     and use closeEntry() to close each file entry */
@@ -161,10 +166,9 @@ public class HomeController {
     		ioe.printStackTrace();
     	}
 
-	
-    	model.addAttribute("simpleusb", simpleusb);    	 	
 
-        return null;
+    	model.addAttribute("basicdata", basicdata);    	 	
+
     }
     
 

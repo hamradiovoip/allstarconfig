@@ -15,30 +15,69 @@ public class ConfigData {
 	public  String ctcssfrom; 
 	
 	// rpt
-	public String rxChannel = "dahdi/pseud";
+	public String rxchannel = "dahdi/pseud";
 	public String duplex ="1";
-	public String nodeNumber = "1999";
+	//public String nodeNumber = "1999";
 	public String call = "";
 	
 	public StringBuffer lineStr;
 	StringBuffer s;
-	public String resultsStr = "none";
+	public String resultsSimpleUsbStr = "none";
+	public String resultsRptStr = "none";
+	public String resultsIaxStr = "none";
 	
 	ExtensionsData extData;
 	IaxConfigData iaxData;
 	RptConfigData rptData;
-	SimpleUSBConfigData simple;
+	SimpleUSBConfigData simpleusb;
 	
 
 	
-	public ConfigData(){
-		
+	public ConfigData()
+	{	
 				
-		// echolink = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode,
-        // lat,  lon);
-		// rpt = new RptConfigData(ch, node, call, duplex);
-		// simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  
+		//EchoLinkConfigData echolink = new EchoLinkConfigData(call, pwd, name, qth, email, node, astnode, lat,  lon);
+		rptData = new RptConfigData(rxchannel, node, call, duplex);
+		simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, node);
+		iaxData = new IaxConfigData(bindport, node, call, pwd);
+		 
 	}
+	
+		
+	public void buildConfigfiles()
+	{		
+		
+		// rpt config
+		rptData = new RptConfigData(this.rxchannel, this.node,  this.call, this.duplex);
+		resultsRptStr = rptData.buildRptString();		
+		
+		// iax config
+		iaxData = new IaxConfigData(this.bindport, this.node, this.call,  this.pwd); 
+		resultsIaxStr = iaxData.buildIAX();
+		
+		//simple USB config
+		simpleusb = new SimpleUSBConfigData(this.carrierfrom, this.ctcssfrom, this.node);
+		resultsSimpleUsbStr = simpleusb.buildSimpleUsbString();
+		
+		// echolink in future
+
+		
+	}
+	
+	public String getRptStr() {
+		return(this.resultsRptStr);
+		
+	}	
+	
+	public String getIaxStr() {
+		return(this.resultsIaxStr);
+		
+	}	
+	public String getSimpleUsbStr() {
+		return(this.resultsSimpleUsbStr);
+		
+	}	
+	
 	
 	public String getcarrierfrom() 
 	{
@@ -73,12 +112,12 @@ public class ConfigData {
 	
 	public String getrxChannel() 
 	{
-		return(this.rxChannel);
+		return(this.rxchannel);
 	}
 
-	public void setrxChannel(String rxChannel)
+	public void setrxChannel(String rxchannel)
 	{
-		this.rxChannel = rxChannel;
+		this.rxchannel = rxchannel;
 	}
 	
 	
@@ -94,29 +133,31 @@ public class ConfigData {
 	}
 	
 	
-	
-	
-	public String buildConfigfiles(){
-		
-		
-		// rpt config
-		rptData = new RptConfigData(this.rxChannel, this.node,  this.call, this.duplex);
-		//rptData.buildRptString();
-		
-		
-		// iax config
-		iaxData = new IaxConfigData(this.bindport, this.node, this.call,  this.pwd); 
-		
-		//simple USB config
-		simple = new SimpleUSBConfigData(this.carrierfrom, this.ctcssfrom, this.node);
-		
-		
-		// echolink in future
-		
-		return(null);
-		
+
+
+	public void setpwd(String pwd)
+	{
+		this.pwd = pwd;
 	}
 	
+
+	public String getpwd()
+	{
+		return(this.pwd);
+	}
+
+
+
+	public void setbindport(String bindport) 
+	{
+		this.bindport= bindport;
+	}
+	
+	
+	public String getbindport() 
+	{
+		return(this.bindport);
+	}
 	
 	
 	

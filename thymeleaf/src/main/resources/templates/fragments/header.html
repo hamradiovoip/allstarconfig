@@ -15,27 +15,19 @@
         <li><a th:href="@{/status}">Status</a></li>
         
          <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Generate Individual Config Files
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Config File <BR> Generator
         <span class="caret"></span></a>
         
-        <ul class="dropdown-menu">                           
+        <ul class="dropdown-menu">        
+          <li><a th:href="@{/basic}">All Basic Config Files in Zip</a></li> 
           <li><a th:href="@{/echolink}">Echolink</a></li>
           <li><a th:href="@{/rpt}">RPT </a></li>
            <li><a th:href="@{/simpleusb}">Simple USB </a></li>
           <li><a th:href="@{/iax}">IAX</a></li>      
         </ul>
-      </li>
-        
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Generate All Config Files
-        <span class="caret"></span></a>
-        
-        <ul class="dropdown-menu">           
-           <li><a th:href="@{/basic}">All Mandatory Config Files</a></li>   
-               
-        </ul>
-      </li>
-       <li><a th:href="@{/audio}">Audio Levels</a></li>
+      </li>        
+
+      <li><a th:href="@{/audio}">Audio Levels</a></li>
       <li><a th:href="@{/controller}">Node Control</a></li>
       <li><a th:href="@{/live}">Live Audio</a></li>
       <li><a th:href="@{/webtrans}">Webtranseiver</a></li>

@@ -12,16 +12,17 @@
 <P>
 <center><h2>Generate All Necessary Config Files</h2></center><p>
 
-<form action="#" th:action="@{/basic}" th:object="${basic}" method="post">
+<form action="#" th:action="@{/basic}" th:object="${basicdata}" method="post">
 <fieldset>
 <legend> Basic Settings</legend>
 
 <table class="table1">
 
 <tr><td><strong>Node Number</strong></td><td> <input type="text" name="node" th:field="*{node}" value=""></td> </tr><br>
-<tr><td><strong>Call Sign</strong> </td><td> <input type="text" name="call" value=""></td> </tr><br>
-<tr><td><strong>Allstar System Password</strong></td><td> <input type="text" name="call" value=""></tr><br>
-
+<tr><td><strong>Call Sign</strong> </td><td> <input type="text" name="call" th:field="*{call}"value=""></td> </tr><br>
+<tr><td><strong>Allstar System Password</strong></td><td> <input type="text" th:field="*{pwd}" name="pwd" value=""></tr><br>
+<tr><td><strong>Duplex</strong></td><td> <input type="text" name="duplex" th:field="*{duplex}" value=""></tr><br>
+<tr><td><strong>Bind Port</strong></td><td> <input type="text" name="bindport" th:field="*{bindport}" value=""></tr><br>
 
 <tr><td><strong>Channel Driver </strong><br></td>
  <td><select>
