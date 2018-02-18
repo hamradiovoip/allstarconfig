@@ -122,6 +122,7 @@ public class HomeController {
     	String resultsSimpleUsbStr = basicdata.getSimpleUsbStr();
     	String resultsRptStr = basicdata.getRptStr();
     	String resultsIaxStr = basicdata. getIaxStr();    
+    	String resultsExtStr = basicdata.getExtStr();
     	ByteArrayOutputStream baos = new ByteArrayOutputStream();
     	ZipOutputStream zos = null;
 
@@ -144,11 +145,18 @@ public class HomeController {
     	  ZipEntry entryIax = new ZipEntry("iax.conf");
     	  zos.putNextEntry(entryIax);
     	  zos.write(resultsIaxStr.getBytes());
+    	  zos.closeEntry();
+    	  
+    	  
+    	  ZipEntry entryExt = new ZipEntry("extensions.conf");
+    	  zos.putNextEntry(entryExt);
+    	  zos.write(resultsExtStr.getBytes());
     	  zos.closeEntry();    	  
+    	  
+    	  
     	  
     	  zos.close();    
     	  baos.close();
-    	  
  
 
          
@@ -405,15 +413,15 @@ public class HomeController {
     }
     
     @PostMapping("/simpleusb")
-    public String simpleusbSubmit(@ModelAttribute @Valid final SimpleUSBConfigData simpleusb,  Model model,
+    public String simpleusbSubmit(@ModelAttribute @Valid final SimpleUSBConfigData simpleusb1,  Model model,
     		BindingResult bindingResult) 
     {   	
     	
-    	String carrierfrom = simpleusb.getcarrierfrom();			
-		String ctcssfrom = simpleusb.getctcssfrom();	
-		String astnode = simpleusb.getastnode();	
+    	String carrierfrom = simpleusb1.getcarrierfrom();			
+		String ctcssfrom = simpleusb1.getctcssfrom();	
+		String astnode = simpleusb1.getastnode();	
     	   	    	    			
-    	//simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
+		SimpleUSBConfigData simpleusb = new SimpleUSBConfigData(carrierfrom, ctcssfrom, astnode);  	
     	
 	
     	model.addAttribute("simpleusb", simpleusb);    	 	

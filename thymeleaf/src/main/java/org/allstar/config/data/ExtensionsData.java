@@ -1,16 +1,24 @@
 package org.allstar.config.data;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Getter @Setter @NoArgsConstructor 
 public class ExtensionsData {
     String node ="";
 	StringBuffer s;
 	public String resultsStr = "none";
 
+	
+		
 	/*
 	 * 
 	 */
-	ExtensionsData()
+	ExtensionsData(String node)
 	{
-
+		buildExtension();
 
 	}
 
@@ -18,7 +26,7 @@ public class ExtensionsData {
 	/*
 	 * 
 	 */
-	public String	buildExtension() 
+	public String buildExtension() 
 	{
 
 

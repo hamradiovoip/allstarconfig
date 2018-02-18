@@ -25,12 +25,13 @@ public class ConfigData {
 	public String resultsSimpleUsbStr = "none";
 	public String resultsRptStr = "none";
 	public String resultsIaxStr = "none";
+	public String resultsExtStr = "none";
 	
 	ExtensionsData extData;
 	IaxConfigData iaxData;
 	RptConfigData rptData;
 	SimpleUSBConfigData simpleusb;
-	
+
 
 	
 	public ConfigData()
@@ -59,8 +60,16 @@ public class ConfigData {
 		simpleusb = new SimpleUSBConfigData(this.carrierfrom, this.ctcssfrom, this.node);
 		resultsSimpleUsbStr = simpleusb.buildSimpleUsbString();
 		
+		extData = new ExtensionsData(this.node);
+		resultsExtStr = extData.buildExtension();
 		// echolink in future
 
+		
+	}
+	
+
+	public String getExtStr() {
+		return(this.resultsExtStr);
 		
 	}
 	
