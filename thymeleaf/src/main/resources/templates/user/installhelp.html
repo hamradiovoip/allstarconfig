@@ -48,12 +48,91 @@ chmod +x allstar-asterisk-install.sh
 ./allstar-asterisk-install.sh
 <p>
 
-<a href="https://github.com/AllStarLink/DIAL"> Dial Git Hub</a>
-<p>
 
-<a href="https://allstarlink.org/nodelist.php"> List of all nodes</a>
 
-<p>
+
+<pre>
+ Config Files
+
+These configuration files are used to set up and customize one or more radio nodes:
+Configuration File 	Function
+/etc/asterisk/echolink.conf 	Echolink Configuration
+/etc/asterisk/extensions.conf 	Asterisk Dialplan (call routing)
+/etc/asterisk/iax.conf 	IAX (inter-asterisk exchange) Configuration
+/etc/asterisk/rpt.conf 	Repeater/Node Configuration
+/etc/asterisk/usbradio.conf 	USB fob Configuration
+/etc/asterisk/simpleusb.conf 	Alternate USB fob Configuration
+/etc/asterisk/voter.conf 	Voter Configuration
+/etc/asterisk/radbridge.conf 	Radio Bridge Configuration
+/etc/asterisk/gps.conf 	APRS and GPS Configuration
+/etc/zaptel.conf 	Zaptel Device Configuration
+
+
+
+
+ Allstar Link Standard Commands
+
+This section contains the suggested prefix digits, mandatory command codes, and suggested command codes for Allstar Link.
+
+Prefix Digit Suggestions
+
+PrefixFunctions
+*1Disconnect Link
+*2Monitor Link
+*3Connect Link
+*4Command Mode
+*5Macros
+*6User Functions
+*7Connection Status/Functions
+*8User Functions
+*9User Functions
+*0User Functions
+*AUser Functions
+*BUser Functions
+*CUser Functions
+*DUser Functions
+
+Mandatory Command Codes
+These are the mandatory command codes which all Allstar Link nodes must support to provide command code consistency to the users.
+
+Command CodeDescription
+*1nodeDisconnect Link
+*2nodeConnect link in monitor mode
+*3nodeConnect link in transcieve mode
+*4nodeEnter command mode on a remote node
+*70Local connection status
+*99DTMF Phone Key (Assert PTT from Phone Portal)
+
+Notes
+
+    node is an Allstar Link node number
+    Node number zero (0) is shorthand for the last node operated on by a previous command
+    Monitor mode means listen to a node, but do not send any audio to it
+    Command mode means send all received DTMF digits to the node number specified (bypassing the local command decoder). Send # to exit command mode, and restore local command decoding. 
+
+Optional Command Codes
+
+Command CodeDescription
+*80Force System ID
+*81Say System Time
+*980Say app_rpt software version
+*75Link Connect (Local Monitor Only)
+*72Last active node (system-wide)
+*73System-wide connection status
+*71Disconnect all links (macro)
+*74Reconnect all links (macro)
+
+
+
+</pre>
+
+
+
+
+
+
+
+
 <pre>
 
 
