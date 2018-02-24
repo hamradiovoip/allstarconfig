@@ -134,153 +134,153 @@ public class RptConfigData {
 	 s.append("linktolink = no				; disables forcing physical half-duplex operation of main repeater while\n" + 
 	 		"						; still keeping half-duplex semantics (optional)\n" + 
 	 		"\n" + 
-	 		"	linkmongain = 0				; Link Monitor Gain adjusts the audio level of monitored nodes when a signal from another node or the local receiver is received.\n" + 
+	 		"linkmongain = 0				; Link Monitor Gain adjusts the audio level of monitored nodes when a signal from another node or the local receiver is received.\n" + 
 	 		"						; If linkmongain is set to a negative number the monitored audio will decrease by the set amount in db.\n" + 
 	 		"						; If linkmongain set to a positive number monitored audio will increase by the set amount in db.\n" + 
 	 		"						; The value of linkmongain is in db. The default value is 0 db.\n" + 
 	 		"\n" + 
-	 		"	erxgain = -3				; Echolink receive gain adjustment\n" + 
+	 		"erxgain = -3				; Echolink receive gain adjustment\n" + 
 	 		"						; Note: Gain is in db-volts (20logVI/VO)\n" + 
-	 		"	etxgain = 3				; Echolink transmit gain adjustment\n" + 
+	 		"etxgain = 3				; Echolink transmit gain adjustment\n" + 
 	 		"						; Note: Gain is in db-volts (20logVI/VO)\n" + 
-	 		"	;eannmode = 1                           ; 1 = Say only node number on echolink connects (default = 1)\n" + 
+	 		";eannmode = 1                           ; 1 = Say only node number on echolink connects (default = 1)\n" + 
 	 		"	                                        ; 2 = say phonetic call sign only on echolink connects\n" + 
 	 		"	                                        ; 3 = say phonetic call sign and node number on echolink connects\n");
 	 s.append(";controlstates = controlstates		; system control state stanza\n" + 
 	 		"\n" + 
-	 		"	scheduler = schedule			; scheduler stanza\n" + 
-	 		"	functions = functions			; Repeater Function stanza\n" + 
-	 		"	phone_functions = functions		; Phone Function stanza\n" + 
-	 		"	link_functions = functions		; Link Function stanza\n" + 
+	 		"scheduler = schedule			; scheduler stanza\n" + 
+	 		"functions = functions			; Repeater Function stanza\n" + 
+	 		"phone_functions = functions		; Phone Function stanza\n" + 
+	 		"link_functions = functions		; Link Function stanza\n" + 
 	 		"\n" + 
-	 		"	telemetry = telemetry			; Telemetry stanza\n" + 
-	 		"	morse = morse				; Morse stanza\n" + 
-	 		"	wait_times = wait-times			; Wait times stanza\n" + 
+	 		"telemetry = telemetry			; Telemetry stanza\n" + 
+	 		"morse = morse				; Morse stanza\n" + 
+	 		"wait_times = wait-times			; Wait times stanza\n" + 
 	 		"\n" + 
-	 		"	context = radio				; dialing context for phone\n" + 
-	 		"	callerid = \\\"Repeater\\\" <0000000000>	; callerid for phone calls\n" + 
-	 		"	accountcode = RADIO                     ; account code (optional)\n" + 
+	 		"context = radio				; dialing context for phone\n" + 
+	 		"callerid = \\\"Repeater\\\" <0000000000>	; callerid for phone calls\n" + 
+	 		"accountcode = RADIO                     ; account code (optional)\n" + 
 	 		"\n" + 
-	 		"	hangtime = 5000				; squelch tail hang time (in ms) (optional, default 5 seconds, 5000 ms)\n" + 
-	 		"	althangtime = 4000			; longer squelch tail\n" + 
-	 		"	totime = 180000				; transmit time-out time (in ms) (optional, default 3 minutes 180000 ms)\n" + 
+	 		"hangtime = 5000				; squelch tail hang time (in ms) (optional, default 5 seconds, 5000 ms)\n" + 
+	 		"althangtime = 4000			; longer squelch tail\n" + 
+	 		"totime = 180000				; transmit time-out time (in ms) (optional, default 3 minutes 180000 ms)\n" + 
 	 		"\n" + 
-	 		"	idrecording = |iWA4XYZ			; cording or morse string see http://ohnosec.org/drupal/node/87\n" + 
-	 		"	idtalkover = |iWA4XYZ                   ; Talkover ID (optional) default is none see http://ohnosec.org/drupal/node/129\n" + 
+	 		"idrecording = |iWA4XYZ			; cording or morse string see http://ohnosec.org/drupal/node/87\n" + 
+	 		"idtalkover = |iWA4XYZ                   ; Talkover ID (optional) default is none see http://ohnosec.org/drupal/node/129\n" + 
 	 		"						; See Telemetry section Example: idrecording = rpt/nodenames/1999\n" + 
-	 		"	idtime = 540000				; id interval time (in ms) (optional) Default 5 minutes (300000 ms)\n" + 
-	 		"	politeid = 30000			; time in milliseconds before ID timer expires to try and ID in the tail. (optional, default 30000)\n" + 
+	 		"idtime = 540000				; id interval time (in ms) (optional) Default 5 minutes (300000 ms)\n" + 
+	 		"politeid = 30000			; time in milliseconds before ID timer expires to try and ID in the tail. (optional, default 30000)\n" + 
 	 		"\n" + 
-	 		"	unlinkedct = ct2			; Send a this courtesy tone when the user unkeys if the node is not connected to any other nodes. (optional, default is none)\n" + 
-	 		"	remotect = ct3				; remote linked courtesy tone (indicates a remote is in the list of links)\n" + 
-	 		"	linkunkeyct = ct8			; sent when a transmission received over the link unkeys\n" + 
-	 		"	;nolocallinkct = 0			; Send unlinkedct instead if another local node is connected to this node (hosted on the same PC).\n" + 
+	 		"unlinkedct = ct2			; Send a this courtesy tone when the user unkeys if the node is not connected to any other nodes. (optional, default is none)\n" + 
+	 		"remotect = ct3				; remote linked courtesy tone (indicates a remote is in the list of links)\n" + 
+	 		"linkunkeyct = ct8			; sent when a transmission received over the link unkeys\n" + 
+	 		";nolocallinkct = 0			; Send unlinkedct instead if another local node is connected to this node (hosted on the same PC).\n" + 
 	 		"\n" + 
-	 		"	;connpgm = yourconnectprogram		; Disabled. Execute a program you specify on connect. (default)\n" + 
+	 		";connpgm = yourconnectprogram		; Disabled. Execute a program you specify on connect. (default)\n" + 
 	 		"						; passes 2 command line arguments to your program: \n" + 
 	 		"						; 1. node number in this stanza (us)\n" + 
 	 		"						; 2. node number being connected to us (them)\n" + 
-	 		"	;discpgm = yourdisconnectprogram	; Disabled. Execute a program you specify on disconnect. (default)\n" + 
+	 		";discpgm = yourdisconnectprogram	; Disabled. Execute a program you specify on disconnect. (default)\n" + 
 	 		"						; passes 2 command line arguments to your program: \n" + 
 	 		"						; 1. node number in this stanza (us)\n" + 
 	 		"						; 2. node number being disconnected from us (them)\n" + 
 	 		"\n" + 
 	 		"	;lnkactenable = 0			; Set to 1 to enable the link activity timer. Applicable to standard nodes only.\n" + 
 	 		"\n" + 
-	 		"	;lnkacttime = 1800			; Link activity timer time in seconds.\n" + 
-	 		"	;lnkactmacro = *52			; Function to execute when link activity timer expires.\n" + 
-	 		"	;lnkacttimerwarn = 30seconds		; Message to play when the link activity timer has 30 seconds left.\n" + 
+	 		";lnkacttime = 1800			; Link activity timer time in seconds.\n" + 
+	 		";lnkactmacro = *52			; Function to execute when link activity timer expires.\n" + 
+	 		";lnkacttimerwarn = 30seconds		; Message to play when the link activity timer has 30 seconds left.\n" + 
 	 		"\n" + 
-	 		"	;remote_inact_timeout =			; Specifies the amount of time without keying from the link. Set to 0 to disable timeout. (15 * 60)\n" + 
-	 		"	;remote_timeout =			; Session time out for remote base. Set to 0 to disable. (60 * 60)\n" + 
-	 		"	;remote_timeout_warning_freq =		; 30\n" + 
-	 		"	;remote_timeout_warning =		; (3 * 60) \n" + 
+	 		";remote_inact_timeout =			; Specifies the amount of time without keying from the link. Set to 0 to disable timeout. (15 * 60)\n" + 
+	 		";remote_timeout =			; Session time out for remote base. Set to 0 to disable. (60 * 60)\n" + 
+	 		";remote_timeout_warning_freq =		; 30\n" + 
+	 		";remote_timeout_warning =		; (3 * 60) \n" + 
 	 		"\n" + 
-	 		"	;nounkeyct = 0				; Set to a 1 to eliminate courtesy tones and associated delays.\n" + 
+	 		";nounkeyct = 0				; Set to a 1 to eliminate courtesy tones and associated delays.\n" + 
 	 		"\n" + 
-	 		"	holdofftelem = 0			; Hold off all telemetry when signal is present on receiver or from connected nodes\n" + 
+	 		"holdofftelem = 0			; Hold off all telemetry when signal is present on receiver or from connected nodes\n" + 
 	 		"						; except when an ID needs to be done and there is a signal coming from a connected node.\n" + 
 	 		"\n" + 
-	 		"	telemdefault = 1                        ; 0 = telemetry output off\n" + 
+	 		"telemdefault = 1                        ; 0 = telemetry output off\n" + 
 	 		"	                                        ; 1 = telemetry output on (default = 1)\n" + 
 	 		"	                                        ; 2 = timed telemetry output on command execution and for a short time thereafter.\n" + 
 	 		"\n" + 
-	 		"	telemdynamic = 1                        ; 0 = disallow users to change the local telemetry setting with a COP command,\n" + 
+	 		"telemdynamic = 1                        ; 0 = disallow users to change the local telemetry setting with a COP command,\n" + 
 	 		"	                                        ; 1 = Allow users to change the setting with a COP command. (default = 1)\n" + 
 	 		"\n" + 
-	 		"	;beaconing = 0				; Send ID regardless of repeater activity (Required in the UK, but probably illegal in the US)\n" + 
+	 		";beaconing = 0				; Send ID regardless of repeater activity (Required in the UK, but probably illegal in the US)\n" + 
 	 		"\n" + 
-	 		"	parrotmode = 0				; 0 = Parrot Off (default = 0)\n" + 
+	 		"parrotmode = 0				; 0 = Parrot Off (default = 0)\n" + 
 	 		"						; 1 = Parrot On Command\n" + 
 	 		"						; 2 = Parrot Always\n" + 
 	 		"						; 3 = Parrot Once by Command\n" + 
 	 		"\n" + 
-	 		"	parrottime = 1000			; Set the amount of time in milliseconds \n" + 
+	 		"parrottime = 1000			; Set the amount of time in milliseconds \n" + 
 	 		"						; to wait before parroting what was received\n" + 
 	 		"\n" + 
-	 		"	;rxnotch=1065,40                        ; (Optional) Notch a particular frequency for a specified\n" + 
+	 		";rxnotch=1065,40                        ; (Optional) Notch a particular frequency for a specified\n" + 
 	 		"	                                        ; b/w. app_rpt must have been compiled with\n" + 
 	 		"	                                        ; the notch option\n" + 
 	 		"\n");
 	 s.append("startup_macro = \n" + 
 	 		"\n" + 
-	 		"	; nodenames = /var/lib/asterisk/sounds/rpt/nodenames.callsign	; Point to alternate nodename sound directory\n" + 
+	 		"; nodenames = /var/lib/asterisk/sounds/rpt/nodenames.callsign	; Point to alternate nodename sound directory\n" + 
 	 		"\n" + 
 	 		"	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n" + 
 	 		"	; Need more information on these\n" + 
 	 		"\n" + 
-	 		"	;extnodes = extnodes-different	; section in extnodefile containing dynamic node information (optional)\n" + 
-	 		"	;extnodefile = /foo/nodes	; Points to nodelist file containing dynamic node info default = /var/lib/asterisk/rpt_extnodes (optional)\n" + 
-	 		"	;extnodefile2 =			; Is this a list of node files? Possible a list of private nodes or a list of static IPs for known nodes???? \n" + 
-	 		"	;nodenames = /foo/names         ; locaton of node sound files default = /var/lib/asterisk/sounds/rpt/nodenames\n" + 
-	 		"	;archivedir = /tmp              ; defines and enables activity recording into specified directory (optional)\n" + 
-	 		"	;monminblocks = 2048            ; Min 1K blocks to be left on partition (will not save monitor output if disk too full)\n" + 
+	 		";extnodes = extnodes-different	; section in extnodefile containing dynamic node information (optional)\n" + 
+	 		";extnodefile = /foo/nodes	; Points to nodelist file containing dynamic node info default = /var/lib/asterisk/rpt_extnodes (optional)\n" + 
+	 		";extnodefile2 =			; Is this a list of node files? Possible a list of private nodes or a list of static IPs for known nodes???? \n" + 
+	 		";nodenames = /foo/names         ; locaton of node sound files default = /var/lib/asterisk/sounds/rpt/nodenames\n" + 
+	 		";archivedir = /tmp              ; defines and enables activity recording into specified directory (optional)\n" + 
+	 		";monminblocks = 2048            ; Min 1K blocks to be left on partition (will not save monitor output if disk too full)\n" + 
 	 		"\n" + 
 	 		"	;                               ; The tailmessagetime,tailsquashedtime, and tailmessagelist need to be set\n" + 
-	 		"	;                               ; to support tail messages. They can be omitted otherwise.\n" + 
-	 		"	;tailmessagetime = 300000       ; Play a tail message every 5 mins\n" + 
-	 		"	;tailsquashedtime = 30000       ; If squashed by another user,\n" + 
+	 		"   ;                               ; to support tail messages. They can be omitted otherwise.\n" + 
+	 		";tailmessagetime = 300000       ; Play a tail message every 5 mins\n" + 
+	 		";tailsquashedtime = 30000       ; If squashed by another user,\n" + 
 	 		"	;                               ; try again after 30 seconds\n" + 
-	 		"	;tailmessagelist = msg1,msg2    ; list of messages to be played for tail message\n" + 
+	 		";tailmessagelist = msg1,msg2    ; list of messages to be played for tail message\n" + 
 	 		"\n" + 
-	 		"	; alt_functions\n" + 
-	 		"	; ctgroup\n" + 
-	 		"	; dphone_functions\n" + 
-	 		"	; idtime\n" + 
-	 		"	; iobase\n" + 
-	 		"	; iospeed\n" + 
-	 		"	; locallist\n" + 
-	 		"	; mars		Remote Base\n" + 
-	 		"	; memory\n" + 
-	 		"	; nobusyout\n" + 
-	 		"	; nodes\n" + 
-	 		"	; nolocallinkct\n" + 
-	 		"	; notelemtx\n" + 
-	 		"	; outxlat\n" + 
-	 		"	; parrot\n" + 
-	 		"	; propagate_phonedtmf\n" + 
-	 		"	; rptnode\n" + 
-	 		"	; rptinactmacro  Macro to execute when inactivity timer expires \n" + 
-	 		"	; rptinacttime   Inactivity timer time in seconds  (0 seconds disables feature)\n" + 
-	 		"	; rxnotch	Optional Audio notch\n" + 
-	 		"	; simplexphonedelay\n" + 
-	 		"	; tonemacro\n" + 
-	 		"	; tonezone\n" + 
-	 		"	; txlimits\n");
+	 		"; alt_functions\n" + 
+	 		"; ctgroup\n" + 
+	 		"; dphone_functions\n" + 
+	 		"; idtime\n" + 
+	 		"; iobase\n" + 
+	 		"; iospeed\n" + 
+	 		"; locallist\n" + 
+	 		"; mars		Remote Base\n" + 
+	 		"; memory\n" + 
+	 		"; nobusyout\n" + 
+	 		"; nodes\n" + 
+	 		"; nolocallinkct\n" + 
+	 		"; notelemtx\n" + 
+	 		"; outxlat\n" + 
+	 		"; parrot\n" + 
+	 		"; propagate_phonedtmf\n" + 
+	 		"; rptnode\n" + 
+	 		"; rptinactmacro  Macro to execute when inactivity timer expires \n" + 
+	 		"; rptinacttime   Inactivity timer time in seconds  (0 seconds disables feature)\n" + 
+	 		"; rxnotch	Optional Audio notch\n" + 
+	 		"; simplexphonedelay \n" + 
+	 		"; tonemacro\n" + 
+	 		"; tonezone\n" + 
+	 		"; txlimits\n");
 	 s.append(lineStr);
 	 
 	 /* *** Status Reporting ****/
 	 s.append("statpost_program = /usr/bin/wget,-q,--timeout=15,--tries=1,--output-document=/dev/null\n");
 	 s.append("statpost_url = http://stats.allstarlink.org/uhandler.php ; Status updates \n");
-	 s.append("	; *** Status Reporting ***\n" + 
+	 s.append("; *** Status Reporting ***\n" + 
 	 		"\n" + 
 	 		"	; Uncomment either group following two statpost lines to report the status of your node to stats.allstarlink.org\n" + 
 	 		"	; depending on whether you are running ACID, Debian or Limey Linux.\n" + 
 	 		"	; The difference is simply where your wget is located.\n" + 
 	 		"\n" + 
 	 		"	; ** For ACID and Debian ***\n" + 
-	 		"	;statpost_program = /usr/bin/wget,-q,--timeout=15,--tries=1,--output-document=/dev/null                       \n" + 
-	 		"	;statpost_url = http://stats.allstarlink.org/uhandler.php ; Status updates \n" + 
+	 		";statpost_program = /usr/bin/wget,-q,--timeout=15,--tries=1,--output-document=/dev/null                       \n" + 
+	 		";statpost_url = http://stats.allstarlink.org/uhandler.php ; Status updates \n" + 
 	 		"\n" + 
 	 		"	; ** For Limey Linux **\n" + 
 	 		"	;statpost_program = /bin/wget,-q,--timeout=15,--tries=1,--output-document=/dev/null                       \n" + 
@@ -331,37 +331,37 @@ public class RptConfigData {
 	 s.append("; Autopatch Commands\n" + 
 	 		"	; Note, This may be a good place for other 2 digit frequently used commands  \n" + 
 	 		"\n" + 
-	 		"	61 = autopatchup,noct = 1,farenddisconnect = 1,dialtime = 20000  ; Autopatch up\n" + 
-	 		"	62 = autopatchdn                                                 ; Autopatch down\n" + 
+	 		"61 = autopatchup,noct = 1,farenddisconnect = 1,dialtime = 20000  ; Autopatch up\n" + 
+	 		"62 = autopatchdn                                                 ; Autopatch down\n" + 
 	 		"\n" + 
 	 		"	; autopatchup can optionally take comma delimited setting=value pairs:\n" + 
 	 		"\n" + 
-	 		"	; context = string		; Override default context with \\\"string\\\"\n" + 
-	 		"	; dialtime = ms			; Specify the max number of milliseconds between phone number digits (1000 milliseconds = 1 second)\n" + 
-	 		"	; farenddisconnect = 1		; Automatically disconnect when called party hangs up\n" + 
-	 		"	; noct = 1			; Don't send repeater courtesy tone during autopatch calls\n" + 
-	 		"	; quiet = 1			; Don't send dial tone, or connect messages. Do not send patch down message when called party hangs up\n" + 
+	 		"; context = string		; Override default context with \\\"string\\\"\n" + 
+	 		"; dialtime = ms			; Specify the max number of milliseconds between phone number digits (1000 milliseconds = 1 second)\n" + 
+	 		"; farenddisconnect = 1		; Automatically disconnect when called party hangs up\n" + 
+	 		"; noct = 1			; Don't send repeater courtesy tone during autopatch calls\n" + 
+	 		"; quiet = 1			; Don't send dial tone, or connect messages. Do not send patch down message when called party hangs up\n" + 
 	 		"					; Example: 123=autopatchup,dialtime=20000,noct=1,farenddisconnect=1\n");
 	 s.append(lineStr);
 	 
 	 // status cmds
 	 s.append("; Status Commands\n" + 
 	 		"\n" + 
-	 		"	; 1 - Force ID (global)\n" + 
-	 		"	; 2 - Give Time of Day (global)\n" + 
-	 		"	; 3 - Give software Version (global)\n" + 
-	 		"	; 4 - Give GPS location info\n" + 
-	 		"	; 5 - Last (dtmf) user\n" + 
-	 		"	; 11 - Force ID (local only)\n" + 
-	 		"	; 12 - Give Time of Day (local only)\n" + 
+	 		"; 1 - Force ID (global)\n" + 
+	 		"; 2 - Give Time of Day (global)\n" + 
+	 		"; 3 - Give software Version (global)\n" + 
+	 		"; 4 - Give GPS location info\n" + 
+	 		"; 5 - Last (dtmf) user\n" + 
+	 		"; 11 - Force ID (local only)\n" + 
+	 		"; 12 - Give Time of Day (local only)\n" + 
 	 		"\n" + 
-	 		"	721 = status,1          ; Force ID (global)\n" + 
-	 		"	722 = status,2          ; Give Time of Day (global)\n" + 
-	 		"	723 = status,3          ; Give software Version (global)\n" + 
-	 		"	724 = status,4          ; Give GPS location info\n" + 
-	 		"	725 = status,5          ; Last (dtmf) user\n" + 
-	 		"	711 = status,11         ; Force ID (local only)\n" + 
-	 		"	712 = status,12         ; Give Time of Day (local only)\n");
+	 		"721 = status,1          ; Force ID (global)\n" + 
+	 		"722 = status,2          ; Give Time of Day (global)\n" + 
+	 		"723 = status,3          ; Give software Version (global)\n" + 
+	 		"724 = status,4          ; Give GPS location info\n" + 
+	 		"725 = status,5          ; Last (dtmf) user\n" + 
+	 		"711 = status,11         ; Force ID (local only)\n" + 
+	 		"712 = status,12         ; Give Time of Day (local only)\n");
 	 
 	 
 	 s.append(lineStr);
@@ -369,40 +369,40 @@ public class RptConfigData {
 	 //link cmds
 	 s.append("; Link Commands\n" + 
 	 		"\n" + 
-	 		"	; 1 - Disconnect specified link\n" + 
-	 		"	; 2 - Connect specified link -- monitor only\n" + 
-	 		"	; 3 - Connect specified link -- tranceive\n" + 
-	 		"	; 4 - Enter command mode on specified link\n" + 
-	 		"	; 5 - System status\n" + 
-	 		"	; 6 - Disconnect all links\n" + 
-	 		"	; 7 - Last Node to Key Up\n" + 
-	 		"	; 8 - Connect specified link -- local monitor only\n" + 
-	 		"	; 9 - Send Text Message (9,<destnodeno or 0 (for all)>,Message Text, etc.\n" + 
-	 		"	; 10 - Disconnect all RANGER links (except permalinks)\n" + 
-	 		"	; 11 - Disconnect a previously permanently connected link\n" + 
-	 		"	; 12 - Permanently connect specified link -- monitor only\n" + 
-	 		"	; 13 - Permanently connect specified link -- tranceive\n" + 
-	 		"	; 15 - Full system status (all nodes)\n" + 
-	 		"	; 16 - Reconnect links disconnected with \\\"disconnect all links\\\"\n" + 
-	 		"	; 17 - MDC test (for diag purposes)\n" + 
-	 		"	; 18 - Permanently Connect specified link -- local monitor only\n");
+	 		"; 1 - Disconnect specified link\n" + 
+	 		"; 2 - Connect specified link -- monitor only\n" + 
+	 		"; 3 - Connect specified link -- tranceive\n" + 
+	 		"; 4 - Enter command mode on specified link\n" + 
+	 		"; 5 - System status\n" + 
+	 		"; 6 - Disconnect all links\n" + 
+	 		"; 7 - Last Node to Key Up\n" + 
+	 		"; 8 - Connect specified link -- local monitor only\n" + 
+	 		"; 9 - Send Text Message (9,<destnodeno or 0 (for all)>,Message Text, etc.\n" + 
+	 		"; 10 - Disconnect all RANGER links (except permalinks)\n" + 
+	 		"; 11 - Disconnect a previously permanently connected link\n" + 
+	 		"; 12 - Permanently connect specified link -- monitor only\n" + 
+	 		"; 13 - Permanently connect specified link -- tranceive\n" + 
+	 		"; 15 - Full system status (all nodes)\n" + 
+	 		"; 16 - Reconnect links disconnected with \\\"disconnect all links\\\"\n" + 
+	 		"; 17 - MDC test (for diag purposes)\n" + 
+	 		"; 18 - Permanently Connect specified link -- local monitor only\n");
 	 s.append(lineStr);
 	 
 	 // ilink
 	 s.append("; ilink commands 1 through 5 are defined in the Mandatory Command section\n" + 
 	 		"\n" + 
-	 		"	806 = ilink,6			; Disconnect all links\n" + 
-	 		"	807 = ilink,7			; Last Node to Key Up\n" + 
-	 		"	808 = ilink,8			; Connect specified link -- local monitor only\n" + 
-	 		"	809 = ilink,9,"+nodeNumber+",\\\"Testing\\\"	; would send a text message to node 1999 replace 1999 with 0 for all connected nodes\n" + 
-	 		"	810 = ilink,10			; Disconnect all RANGER links (except permalinks)\n" + 
-	 		"	811 = ilink,11			; Disconnect a previously permanently connected link\n" + 
-	 		"	812 = ilink,12			; Permanently connect specified link -- monitor only\n" + 
-	 		"	813 = ilink,13			; Permanently connect specified link -- tranceive\n" + 
-	 		"	815 = ilink,15			; Full system status (all nodes)\n" + 
-	 		"	816 = ilink,16			; Reconnect links disconnected with \\\"disconnect all links\\\"\n" + 
-	 		"	817 = ilink,17			; MDC test (for diag purposes)\n" + 
-	 		"	818 = ilink 18			; Permanently Connect specified link -- local monitor only\n" + 
+	 		"806 = ilink,6			; Disconnect all links\n" + 
+	 		"807 = ilink,7			; Last Node to Key Up\n" + 
+	 		"808 = ilink,8			; Connect specified link -- local monitor only\n" + 
+	 		"809 = ilink,9,"+nodeNumber+",\\\"Testing\\\"; would send a text message to node 1999 replace 1999 with 0 for all connected nodes\n" + 
+	 		"810 = ilink,10			; Disconnect all RANGER links (except permalinks)\n" + 
+	 		"811 = ilink,11			; Disconnect a previously permanently connected link\n" + 
+	 		"812 = ilink,12			; Permanently connect specified link -- monitor only\n" + 
+	 		"813 = ilink,13			; Permanently connect specified link -- tranceive\n" + 
+	 		"815 = ilink,15			; Full system status (all nodes)\n" + 
+	 		"816 = ilink,16			; Reconnect links disconnected with \\\"disconnect all links\\\"\n" + 
+	 		"817 = ilink,17			; MDC test (for diag purposes)\n" + 
+	 		"818 = ilink 18			; Permanently Connect specified link -- local monitor only\n" + 
 	 		"\n");
 	 
 	 s.append(lineStr);
@@ -410,12 +410,12 @@ public class RptConfigData {
 	 //  Control operator (cop) functions.
 	 s.append("; Control operator (cop) functions. Change these to something other than these codes listed below!\n" + 
 	 		"\n" + 
-	 		"	901 = cop,1				; System warm boot \n" + 
-	 		"	902 = cop,2				; System enable\n" + 
-	 		"	903 = cop,3				; System disable\n" + 
+	 		"901 = cop,1				; System warm boot \n" + 
+	 		"902 = cop,2				; System enable\n" + 
+	 		"903 = cop,3				; System disable\n" + 
 	 		"\n" + 
-	 		"	904 = cop,4				; Test tone on/off (toggle)\n" + 
-	 		"	905 = cop,5				; Dump system variables on console (debug use only)\n" + 
+	 		"904 = cop,4				; Test tone on/off (toggle)\n" + 
+	 		"905 = cop,5				; Dump system variables on console (debug use only)\n" + 
 	 		"\n" + 
 	 		"	907 = cop,7				; Time out timer enable\n" + 
 	 		"	908 = cop,8				; Time out timer disable\n" + 
