@@ -161,8 +161,6 @@ public class HomeController {
     	  
     	  zos.close();    
     	  baos.close();
- 
-
          
           response.getOutputStream().write(baos.toByteArray());
           response.getOutputStream().close();
@@ -372,7 +370,7 @@ public class HomeController {
     		BindingResult bindingResult) 
     { 	 	   	    	
     	String node = rpt.nodeNumber;
-    	String ch = rpt.rxChannel; 
+    	String ch = rpt.rxchannel; 
     	String call= rpt.call;
     	String duplex= rpt.duplex;
     	

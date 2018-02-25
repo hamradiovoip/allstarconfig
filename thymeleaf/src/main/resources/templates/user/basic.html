@@ -21,27 +21,27 @@
 <tr><td><strong>Node Number</strong></td><td> <input type="text" name="node" th:field="*{node}" value=""></td> </tr><br>
 <tr><td><strong>Call Sign</strong> </td><td> <input type="text" name="call" th:field="*{call}"value=""></td> </tr><br>
 <tr><td><strong>Allstar System Password</strong></td><td> <input type="text" th:field="*{pwd}" name="pwd" value=""></tr><br>
-<tr><td><strong>Duplex</strong></td><td> <input type="text" name="duplex" th:field="*{duplex}" value=""></tr><br>
+<!--  <tr><td><strong>Duplex</strong></td><td> <input type="text" name="duplex" th:field="*{duplex}" value=""></tr><br> -->
 <tr><td><strong>Bind Port</strong></td><td> <input type="text" name="bindport" th:field="*{bindport}" value=""></tr><br>
 
 <tr><td><strong>Channel Driver </strong><br></td>
- <td><select>
-<option value="dahdipseudo" >dahdi/pseudo No radio (hub)</option>
-<option value="simple">SimpleUSB</option>
-<option value="pi">Raspberry Pi PiTA </option>
-<option value="usbradio">USBRadio (DSP) </option>
-<option value="pci">Dahdi PCI Quad card </option>
-<option value="bb">BeagleBoard </option>
-<option value="isrp">USRP GNU Radio interface USRP </option> 
+ <td><select  id="rxchannel" th:field="*{rxchannel}">
+<option value="0" >dahdi/pseudo No radio (hub)</option>
+<option value="1">SimpleUSB</option>
+<option value="2">Raspberry Pi PiTA </option>
+<option value="3">USBRadio (DSP) </option>
+<option value="4">Dahdi PCI Quad card </option>
+<option value="5">BeagleBoard </option>
+<option value="6">USRP GNU Radio interface USRP </option> 
 </select> 
 </td></tr>
 <tr><td>
 <strong>Repeater/Simplex node settings</strong> </td>
 <td>
- <select>
-  <option value="simplex">Simplex</option>
-  <option value="repeater">Repeater</option>
-  <option value="full">Full Duplex</option>  
+ <select  id="duplex" th:field="*{duplex}">
+  <option value="0">Simplex</option>
+  <option value="1">Repeater</option>
+  <option value="2">Full Duplex</option>  
 </select> 
 </td></tr>
 <tr><td><strong>carrierfrom </strong></td><td> <br>

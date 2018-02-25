@@ -12,13 +12,14 @@ public class ConfigData {
 	public String pwd = "";     // Allstar system password
 	
 	public String carrierfrom;
-	public  String ctcssfrom; 
+	public String ctcssfrom; 
 	
 	// rpt
-	public String rxchannel = "dahdi/pseud";
+	public String rxchannel = "0";
 	public String duplex ="1";
 	//public String nodeNumber = "1999";
 	public String call = "";
+	//public String nodesettings= "";
 	
 	public StringBuffer lineStr;
 	StringBuffer s;
@@ -46,8 +47,8 @@ public class ConfigData {
 	
 		
 	public void buildConfigfiles()
-	{		
-		
+	{	
+			
 		// rpt config
 		rptData = new RptConfigData(this.rxchannel, this.node,  this.call, this.duplex);
 		resultsRptStr = rptData.buildRptString();		
@@ -62,9 +63,7 @@ public class ConfigData {
 		
 		extData = new ExtensionsData(this.node);
 		resultsExtStr = extData.buildExtension();
-		// echolink in future
-
-		
+		// echolink in future		
 	}
 	
 	
@@ -84,17 +83,6 @@ public class ConfigData {
 		return(saveNode);
 		
 	}
-	
-	
-	
-	
-	
-	 
-	
-	
-	
-	
-	
 	
 	
 	public String getExtStr() {
@@ -148,12 +136,12 @@ public class ConfigData {
 		this.duplex = duplex;
 	}
 	
-	public String getrxChannel() 
+	public String getrxchannel() 
 	{
 		return(this.rxchannel);
 	}
 
-	public void setrxChannel(String rxchannel)
+	public void setrxchannel(String rxchannel)
 	{
 		this.rxchannel = rxchannel;
 	}
